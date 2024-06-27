@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "setup": "pnpm payload:install",
+    "payload:install": "pnpm dlx create-payload-app@beta",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",

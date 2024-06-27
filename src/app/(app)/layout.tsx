@@ -18,14 +18,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={cn(inter.className, "pt-[var(--header-height)]")}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
+    <html lang="en" suppressHydrationWarning>
+      <body
+        className={cn(inter.className, "pt-[var(--header-height)] antialiased")}
+      >
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Header />
           <div>{children}</div>
         </ThemeProvider>

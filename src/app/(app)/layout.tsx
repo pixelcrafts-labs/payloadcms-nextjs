@@ -19,9 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={cn(inter.className, "pt-[var(--header-height)] antialiased")}
-      >
+      <body className={cn(inter.className, "antialiased")}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Header />
           <div>{children}</div>

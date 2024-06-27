@@ -1,0 +1,9 @@
+node_modules
+coverage
+.eslintcache
+
+/.next
+/.cache
+next-env.d.ts
+
+pnpm-lock.yaml

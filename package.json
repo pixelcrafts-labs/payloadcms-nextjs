@@ -1,36 +1,46 @@
 {
-  "name": "payloadcms-nextjs",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "setup": "pnpm payload:install",
-    "payload:install": "pnpm dlx create-payload-app@beta",
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "@radix-ui/react-slot": "^1.1.0",
-    "class-variance-authority": "^0.7.0",
-    "clsx": "^2.1.1",
-    "lucide-react": "^0.397.0",
-    "next": "14.2.4",
-    "next-themes": "^0.3.0",
-    "react": "^18",
-    "react-dom": "^18",
-    "tailwind-merge": "^2.3.0",
-    "tailwindcss-animate": "^1.0.7"
-  },
-  "devDependencies": {
-    "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "autoprefixer": "^10.4.19",
-    "eslint": "^8",
-    "eslint-config-next": "14.2.4",
-    "postcss": "^8",
-    "tailwindcss": "^3.4.1",
-    "typescript": "^5"
-  }
+	"name": "payloadcms-nextjs",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"setup": "git init && pnpm payload:install && husky install",
+		"payload:install": "pnpm dlx create-payload-app@beta",
+		"dev": "next dev",
+		"build": "next build",
+		"start": "next start",
+		"lint": "next lint",
+		"format": "prettier src/**/*.{ts,tsx} --write",
+		"commitlint": "commitlint --edit",
+		"commitizen": "exec < /dev/tty && git cz --hook || true"
+	},
+	"dependencies": {
+		"@radix-ui/react-slot": "^1.1.0",
+		"class-variance-authority": "^0.7.0",
+		"clsx": "^2.1.1",
+		"lucide-react": "^0.397.0",
+		"next": "14.2.4",
+		"next-themes": "^0.3.0",
+		"react": "^18",
+		"react-dom": "^18",
+		"tailwind-merge": "^2.3.0",
+		"tailwindcss-animate": "^1.0.7"
+	},
+	"devDependencies": {
+		"@commitlint/cli": "^19.3.0",
+		"@commitlint/config-conventional": "^19.2.2",
+		"@types/node": "^20",
+		"@types/react": "^18",
+		"@types/react-dom": "^18",
+		"autoprefixer": "^10.4.19",
+		"commitizen": "^4.3.0",
+		"cz-conventional-changelog": "^3.3.0",
+		"eslint": "^8",
+		"eslint-config-next": "14.2.4",
+		"husky": "^9.0.11",
+		"lint-staged": "^15.2.7",
+		"postcss": "^8",
+		"prettier": "^3.3.2",
+		"tailwindcss": "^3.4.1",
+		"typescript": "^5"
+	}
 }

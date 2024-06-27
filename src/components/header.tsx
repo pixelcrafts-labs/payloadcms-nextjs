@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function Header() {
 	return (
-		<div className="w-full flex justify-between items-center px-5 min-h-[var(--header-height)] shadow-sm">
+		<div className="w-full flex justify-between items-center px-5 min-h-header-height shadow-sm">
 			<Link href={"/"} className="relative inline-block aspect-[300/68] w-20">
 				<Image
 					src="/vercel.svg"

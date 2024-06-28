@@ -3,8 +3,7 @@
 	"version": "0.1.0",
 	"private": true,
 	"scripts": {
-		"setup": "git init && pnpm payload:install && husky install",
-		"payload:install": "pnpm dlx create-payload-app@beta",
+		"setup": "git init && husky install",
 		"dev": "next dev",
 		"build": "next build",
 		"start": "next start",

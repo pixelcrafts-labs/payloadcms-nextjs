@@ -1,3 +1,5 @@
+import { created } from "@cms/fields/utils/created";
+import { modified } from "@cms/fields/utils/modified";
 import type { CollectionConfig } from "payload";
 
 export const Media: CollectionConfig = {
@@ -17,45 +19,8 @@ export const Media: CollectionConfig = {
 			name: "caption",
 			type: "text",
 		},
-		{
-			name: "created-by",
-			type: "text",
-
-			access: {
-				create: () => false,
-				update: () => false,
-			},
-			hooks: {
-				beforeChange: [
-					({ req: { user }, operation, value }) => {
-						if (operation === "create") return user?.email;
-						return value;
-					},
-				],
-			},
-			admin: {
-				position: "sidebar",
-			},
-		},
-		{
-			name: "last-modified",
-			type: "text",
-
-			access: {
-				create: () => false,
-				update: () => false,
-			},
-			hooks: {
-				beforeChange: [
-					({ req: { user } }) => {
-						return user?.email;
-					},
-				],
-			},
-			admin: {
-				position: "sidebar",
-			},
-		},
+		{ ...created },
+		{ ...modified },
 	],
 	upload: true,
 };

@@ -1,7 +1,9 @@
 import type { CollectionConfig } from "payload";
 import { ROLES } from "./utils/roles";
 import { admin } from "@cms/access/admin";
-import { adminOrSelf } from "./access/AdminOrSelf";
+import { created } from "@cms/fields/utils/created";
+import { modified } from "@cms/fields/utils/modified";
+import { adminOrSelf } from "./access/adminOrSelf";
 
 export const Users: CollectionConfig = {
 	slug: "users",
@@ -45,5 +47,8 @@ export const Users: CollectionConfig = {
 				},
 			],
 		},
+
+		{ ...created },
+		{ ...modified },
 	],
 };

@@ -27,6 +27,8 @@ export interface User {
   id: string;
   name?: string | null;
   roles: ('editor' | 'admin')[];
+  'created-by'?: string | null;
+  'last-modified'?: string | null;
   updatedAt: string;
   createdAt: string;
   email: string;

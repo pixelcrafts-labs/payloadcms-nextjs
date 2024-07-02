@@ -6,13 +6,11 @@ import { buildConfig } from "payload";
 import { fileURLToPath } from "url";
 import sharp from "sharp";
 
-import { nodemailerAdapter } from "@payloadcms/email-nodemailer";
-
 import ENV from "@/lib/env";
 
 import { Users } from "@cms/collections/Users";
 import { Media } from "@cms/collections/Media";
-import { emailConfiguration } from "./configs/email";
+import emailConfiguration from "./configs/email";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -32,7 +30,7 @@ export default buildConfig({
 	}),
 	sharp,
 
-	email: emailConfiguration(),
+	email: emailConfiguration,
 
 	plugins: [
 		// storage-adapter-placeholder

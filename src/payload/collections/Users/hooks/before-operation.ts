@@ -19,7 +19,7 @@ const beforeOperation: CollectionBeforeOperationHook = async ({
 	req, // full Request object
 }) => {
 	if (operation === "create") {
-		await sendEmailAfterCreate();
+		// await sendEmailAfterCreate();
 	}
 
 	return args; // return modified operation arguments as necessary

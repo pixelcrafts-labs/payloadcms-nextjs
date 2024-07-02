@@ -45,6 +45,9 @@ export interface User {
 export interface Media {
   id: string;
   alt: string;
+  caption?: string | null;
+  'created-by'?: string | null;
+  'last-modified'?: string | null;
   updatedAt: string;
   createdAt: string;
   url?: string | null;

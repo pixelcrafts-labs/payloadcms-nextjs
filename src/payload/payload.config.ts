@@ -30,7 +30,7 @@ export default buildConfig({
 	}),
 	sharp,
 
-	email: emailConfiguration,
+	// email: emailConfiguration,
 
 	plugins: [
 		// storage-adapter-placeholder

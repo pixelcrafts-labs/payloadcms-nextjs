@@ -6,9 +6,10 @@ import { buildConfig } from "payload";
 import { fileURLToPath } from "url";
 import sharp from "sharp";
 
-import { Users } from "../collections/Users";
-import { Media } from "../collections/Media";
 import ENV from "@/lib/env";
+
+import { Users } from "./collections/Users";
+import { Media } from "./collections/Media";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);

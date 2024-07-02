@@ -8,8 +8,8 @@ import sharp from "sharp";
 
 import ENV from "@/lib/env";
 
-import { Users } from "./collections/Users";
-import { Media } from "./collections/Media";
+import { Users } from "@cms/collections/Users";
+import { Media } from "@cms/collections/Media";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);

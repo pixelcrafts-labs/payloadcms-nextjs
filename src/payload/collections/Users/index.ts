@@ -31,7 +31,7 @@ export const Users: CollectionConfig = {
 			hasMany: true,
 			required: true,
 			access: {
-				update: admin!,
+				update: admin,
 			},
 
 			options: [

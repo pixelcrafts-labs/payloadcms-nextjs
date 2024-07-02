@@ -25,7 +25,8 @@ export interface Config {
  */
 export interface User {
   id: string;
-  roles?: ('user' | 'admin')[] | null;
+  name?: string | null;
+  roles: ('editor' | 'admin')[];
   updatedAt: string;
   createdAt: string;
   email: string;

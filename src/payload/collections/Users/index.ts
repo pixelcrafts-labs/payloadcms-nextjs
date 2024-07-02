@@ -1,26 +1,43 @@
 import type { CollectionConfig } from "payload";
 import { ROLES } from "./utils/roles";
+import { admin } from "@cms/access/admin";
+import { adminOrSelf } from "./access/AdminOrSelf";
 
 export const Users: CollectionConfig = {
 	slug: "users",
+
 	admin: {
-		useAsTitle: "email",
+		defaultColumns: ["name", "email", "roles", "createdAt"],
+		useAsTitle: "name",
+	},
+	access: {
+		// admin: admin,
+		create: admin,
+		delete: admin,
+		read: adminOrSelf,
 	},
 	auth: true,
+
 	fields: [
-		// Email added by default
-		// Add more fields as needed
+		{
+			name: "name",
+			type: "text",
+		},
 		{
 			name: "roles",
 			type: "select",
 
-			defaultValue: [ROLES.USER],
+			defaultValue: [ROLES.EDITOR],
 			hasMany: true,
+			required: true,
+			access: {
+				update: admin!,
+			},
 
 			options: [
 				{
-					value: ROLES.USER,
-					label: "User",
+					value: ROLES.EDITOR,
+					label: "Editor",
 				},
 				{
 					value: ROLES.ADMIN,

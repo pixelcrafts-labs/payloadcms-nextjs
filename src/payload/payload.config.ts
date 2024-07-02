@@ -10,6 +10,7 @@ import ENV from "@/lib/env";
 
 import { Users } from "@cms/collections/Users";
 import { Media } from "@cms/collections/Media";
+import { Pages } from "@cms/collections/Pages";
 import emailConfiguration from "./configs/email";
 
 const filename = fileURLToPath(import.meta.url);
@@ -19,7 +20,7 @@ export default buildConfig({
 	admin: {
 		user: Users.slug,
 	},
-	collections: [Users, Media],
+	collections: [Media, Pages, Users],
 	editor: lexicalEditor(),
 	secret: ENV.PAYLOAD_SECRET,
 	typescript: {

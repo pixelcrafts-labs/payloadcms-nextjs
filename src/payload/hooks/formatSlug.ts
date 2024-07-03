@@ -12,26 +12,27 @@ const format = (string: string) => {
 		.replace(/[\u0300-\u036f]/g, "")
 		.replace(/đ/g, "d")
 		.replace(/Đ/g, "D")
-		.replace(/[^\w ]+/g, "")
-		.replace(/ +/g, "-")
+		.replace(/ /g, "-")
+		.replace(/[^\w-]+/g, "")
 		.toLowerCase();
 };
 
 const formatSlug =
 	(fallback: string): FieldHook =>
 	({ data, operation, originalDoc, value }) => {
-		if (typeof value === "string") {
+		// has value
+		if (value) {
+			console.log("has value", value, format(value));
 			return format(value);
 		}
 
-		if (operation === "create") {
-			const fallbackData = data?.[fallback] || originalDoc?.[fallback];
-
-			if (fallbackData && typeof fallbackData === "string") {
-				return format(fallbackData);
-			}
+		// get fallback value from sibling field
+		const fallbackData = data?.[fallback] || originalDoc?.[fallback];
+		if (fallbackData && typeof fallbackData === "string") {
+			return format(fallbackData);
 		}
 
+		// return empty value
 		return value;
 	};
 

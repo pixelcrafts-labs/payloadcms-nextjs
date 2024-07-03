@@ -10,10 +10,19 @@ export const Accordion: Block = {
 			type: "text",
 		},
 		{
-			name: "content",
-			type: "richText",
+			name: "groups",
+			type: "array",
 			required: true,
-			editor: lexicalEditor(),
+			fields: [
+				{
+					name: "title",
+					type: "text",
+				},
+				{
+					name: "content",
+					type: "richText",
+				},
+			],
 		},
 	],
 };

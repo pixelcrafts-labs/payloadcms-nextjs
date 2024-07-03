@@ -1,6 +1,4 @@
 import { Accordion } from "@cms/blocks/Accordion";
-import { created } from "@cms/fields/created";
-import { modified } from "@cms/fields/modified";
 import type { CollectionConfig } from "payload";
 
 export const Pages: CollectionConfig = {
@@ -13,7 +11,7 @@ export const Pages: CollectionConfig = {
 	fields: [
 		{
 			name: "title",
-			type: "richText",
+			type: "text",
 			required: true,
 		},
 		{
@@ -22,8 +20,6 @@ export const Pages: CollectionConfig = {
 			type: "blocks",
 			required: true,
 		},
-		{ ...created },
-		{ ...modified },
 	],
 	versions: {
 		drafts: true,

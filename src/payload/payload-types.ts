@@ -44,8 +44,6 @@ export interface Media {
   id: string;
   alt: string;
   caption?: string | null;
-  'created-by'?: string | null;
-  'last-modified'?: string | null;
   updatedAt: string;
   createdAt: string;
   url?: string | null;
@@ -64,44 +62,32 @@ export interface Media {
  */
 export interface Page {
   id: string;
-  title: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
+  title: string;
   components: {
     heading?: string | null;
-    content: {
-      root: {
-        type: string;
-        children: {
+    groups: {
+      title?: string | null;
+      content?: {
+        root: {
           type: string;
+          children: {
+            type: string;
+            version: number;
+            [k: string]: unknown;
+          }[];
+          direction: ('ltr' | 'rtl') | null;
+          format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+          indent: number;
           version: number;
-          [k: string]: unknown;
-        }[];
-        direction: ('ltr' | 'rtl') | null;
-        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-        indent: number;
-        version: number;
-      };
-      [k: string]: unknown;
-    };
+        };
+        [k: string]: unknown;
+      } | null;
+      id?: string | null;
+    }[];
     id?: string | null;
     blockName?: string | null;
     blockType: 'accordion';
   }[];
-  'created-by'?: string | null;
-  'last-modified'?: string | null;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
@@ -114,8 +100,6 @@ export interface User {
   id: string;
   name?: string | null;
   roles: ('editor' | 'admin')[];
-  'created-by'?: string | null;
-  'last-modified'?: string | null;
   updatedAt: string;
   createdAt: string;
   email: string;

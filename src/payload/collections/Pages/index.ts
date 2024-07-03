@@ -7,7 +7,10 @@ export const Pages: CollectionConfig = {
 	slug: "pages",
 
 	admin: {
-		// useAsTitle: "title",
+		useAsTitle: "title",
+	},
+	versions: {
+		drafts: true,
 	},
 
 	fields: [
@@ -26,7 +29,4 @@ export const Pages: CollectionConfig = {
 		publishedDateField(),
 		slugField(),
 	],
-	versions: {
-		drafts: true,
-	},
 };

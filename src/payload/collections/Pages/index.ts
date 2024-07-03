@@ -1,18 +1,25 @@
-import { created } from "@cms/fields/utils/created";
-import { modified } from "@cms/fields/utils/modified";
+import { Accordion } from "@cms/blocks/Accordion";
+import { created } from "@cms/fields/created";
+import { modified } from "@cms/fields/modified";
 import type { CollectionConfig } from "payload";
 
 export const Pages: CollectionConfig = {
 	slug: "pages",
 
 	admin: {
-		useAsTitle: "title",
+		// useAsTitle: "title",
 	},
 
 	fields: [
 		{
 			name: "title",
-			type: "text",
+			type: "richText",
+			required: true,
+		},
+		{
+			name: "components",
+			blocks: [Accordion],
+			type: "blocks",
 			required: true,
 		},
 		{ ...created },

@@ -1,5 +1,5 @@
-import { created } from "@cms/fields/utils/created";
-import { modified } from "@cms/fields/utils/modified";
+import { created } from "@cms/fields/created";
+import { modified } from "@cms/fields/modified";
 import type { CollectionConfig } from "payload";
 
 export const Media: CollectionConfig = {

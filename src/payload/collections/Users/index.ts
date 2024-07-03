@@ -1,8 +1,8 @@
 import type { CollectionConfig } from "payload";
 import { ROLES } from "./utils/roles";
 import { admin } from "@cms/access/admin";
-import { created } from "@cms/fields/utils/created";
-import { modified } from "@cms/fields/utils/modified";
+import { created } from "@cms/fields/created";
+import { modified } from "@cms/fields/modified";
 import { adminOrSelf } from "./access/adminOrSelf";
 
 export const Users: CollectionConfig = {

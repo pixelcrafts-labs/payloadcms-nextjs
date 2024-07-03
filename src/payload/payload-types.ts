@@ -63,31 +63,35 @@ export interface Media {
 export interface Page {
   id: string;
   title: string;
-  components: {
-    heading?: string | null;
-    groups: {
-      title?: string | null;
-      content?: {
-        root: {
-          type: string;
-          children: {
-            type: string;
-            version: number;
+  components?:
+    | {
+        heading?: string | null;
+        groups: {
+          title?: string | null;
+          content?: {
+            root: {
+              type: string;
+              children: {
+                type: string;
+                version: number;
+                [k: string]: unknown;
+              }[];
+              direction: ('ltr' | 'rtl') | null;
+              format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+              indent: number;
+              version: number;
+            };
             [k: string]: unknown;
-          }[];
-          direction: ('ltr' | 'rtl') | null;
-          format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-          indent: number;
-          version: number;
-        };
-        [k: string]: unknown;
-      } | null;
-      id?: string | null;
-    }[];
-    id?: string | null;
-    blockName?: string | null;
-    blockType: 'accordion';
-  }[];
+          } | null;
+          id?: string | null;
+        }[];
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'accordion';
+      }[]
+    | null;
+  publishedDate?: string | null;
+  slug?: string | null;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;

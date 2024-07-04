@@ -11,7 +11,7 @@ import ENV from "@/lib/env";
 import { Users } from "@cms/collections/Users";
 import { Media } from "@cms/collections/Media";
 import { Pages } from "@cms/collections/Pages";
-import Categories from "@cms/collections/Categories";
+import { Categories } from "@cms/collections/Categories";
 // import emailConfiguration from "./configs/email";
 
 const filename = fileURLToPath(import.meta.url);

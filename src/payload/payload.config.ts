@@ -11,6 +11,7 @@ import ENV from "@/lib/env";
 import { Users } from "@cms/collections/Users";
 import { Media } from "@cms/collections/Media";
 import { Pages } from "@cms/collections/Pages";
+import Categories from "@cms/collections/Categories";
 // import emailConfiguration from "./configs/email";
 
 const filename = fileURLToPath(import.meta.url);
@@ -22,7 +23,7 @@ export default buildConfig({
 	},
 
 	// Define and configure your collections in this array
-	collections: [Media, Pages, Users],
+	collections: [Media, Pages, Categories, Users],
 
 	typescript: {
 		outputFile: path.resolve(dirname, "payload-types.ts"),

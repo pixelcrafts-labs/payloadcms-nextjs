@@ -13,6 +13,7 @@ export interface Config {
   collections: {
     media: Media;
     pages: Page;
+    posts: Post;
     categories: Category;
     users: User;
     'payload-preferences': PayloadPreference;
@@ -93,6 +94,20 @@ export interface Page {
     | null;
   publishedDate?: string | null;
   slug?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "posts".
+ */
+export interface Post {
+  id: string;
+  title: string;
+  publishedDate?: string | null;
+  slug?: string | null;
+  categories?: (string | Category)[] | null;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;

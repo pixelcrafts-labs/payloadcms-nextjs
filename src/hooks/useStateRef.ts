@@ -4,12 +4,12 @@ import {
 	useCallback,
 	Dispatch,
 	SetStateAction,
-	MutableRefObject,
+	RefObject,
 } from "react";
 
 function useStateRef<T>(
 	initialValue: T
-): [T, Dispatch<SetStateAction<T>>, MutableRefObject<T>] {
+): [T, Dispatch<SetStateAction<T>>, RefObject<T>] {
 	const [state, setState] = useState<T>(initialValue);
 	const ref = useRef<T>(state);
 

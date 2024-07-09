@@ -72,7 +72,6 @@ export default buildConfig({
 			collection: "users",
 			limit: 1,
 		});
-		console.log(existingUsers);
 
 		if (existingUsers.docs.length === 0) {
 			await payload.create({

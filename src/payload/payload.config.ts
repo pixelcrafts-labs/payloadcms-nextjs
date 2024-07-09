@@ -24,6 +24,11 @@ const dirname = path.dirname(filename);
 export default buildConfig({
 	admin: {
 		user: Users.slug,
+		autoLogin: {
+			email: "dev@payloadcms.com",
+			password: "test",
+			prefillOnly: true,
+		},
 	},
 
 	// Define and configure your collections in this array
@@ -60,4 +65,25 @@ export default buildConfig({
 	plugins: [
 		// storage-adapter-placeholder
 	],
+
+	// after init callback
+	async onInit(payload) {
+		const existingUsers = await payload.find({
+			collection: "users",
+			limit: 1,
+		});
+		console.log(existingUsers);
+
+		if (existingUsers.docs.length === 0) {
+			await payload.create({
+				collection: "users",
+				data: {
+					email: "dev@payloadcms.com",
+					password: "test",
+					name: "Admin",
+					roles: ["admin"],
+				},
+			});
+		}
+	},
 });

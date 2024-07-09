@@ -1,7 +1,10 @@
-import { slugField } from "@cms/fields/slug";
-import { Accordion } from "@cms/blocks/Accordion";
 import type { CollectionConfig } from "payload";
-import { publishedDateField } from "@/payload/fields/publishedDate";
+
+import { slugField } from "@cms/fields/slug";
+import { publishedDateField } from "@cms/fields/publishedDate";
+
+import { Accordion } from "@cms/blocks/Accordion";
+import { Content } from "@cms/blocks/Content";
 
 export const Pages: CollectionConfig = {
 	slug: "pages",
@@ -21,7 +24,7 @@ export const Pages: CollectionConfig = {
 		},
 		{
 			name: "components",
-			blocks: [Accordion],
+			blocks: [Accordion, Content],
 			type: "blocks",
 			// required: true,
 		},

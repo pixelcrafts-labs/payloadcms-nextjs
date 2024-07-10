@@ -5,6 +5,7 @@ import { publishedDateField } from "@cms/fields/publishedDate";
 
 import { Accordion } from "@cms/blocks/Accordion";
 import { Content } from "@cms/blocks/Content";
+import { ImageContent } from "@cms/blocks/ImageContent";
 
 export const Pages: CollectionConfig = {
 	slug: "pages",
@@ -24,7 +25,7 @@ export const Pages: CollectionConfig = {
 		},
 		{
 			name: "components",
-			blocks: [Accordion, Content],
+			blocks: [Accordion, Content, ImageContent],
 			type: "blocks",
 			// required: true,
 		},

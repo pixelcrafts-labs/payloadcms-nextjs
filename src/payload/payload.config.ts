@@ -13,6 +13,7 @@ import { Media } from "@cms/collections/Media";
 import { Pages } from "@cms/collections/Pages";
 import { Categories } from "@cms/collections/Categories";
 import { Posts } from "@cms/collections/Posts";
+import { Menu } from "@cms/collections/Menu";
 
 // Globals
 import { Header } from "@cms/globals/Header";
@@ -34,7 +35,7 @@ export default buildConfig({
 	},
 
 	// Define and configure your collections in this array
-	collections: [Media, Pages, Posts, Categories, Users],
+	collections: [Media, Pages, Posts, Categories, Users, Menu],
 
 	// Define globals
 	globals: [Header, Footer, Settings],

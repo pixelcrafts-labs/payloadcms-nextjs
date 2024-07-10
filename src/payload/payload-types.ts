@@ -46,7 +46,7 @@ export interface UserAuthOperations {
  */
 export interface Media {
   id: string;
-  alt: string;
+  alt?: string | null;
   caption?: string | null;
   updatedAt: string;
   createdAt: string;

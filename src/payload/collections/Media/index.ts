@@ -1,4 +1,5 @@
 import type { CollectionConfig } from "payload";
+import getFileName from "@cms/utilities/getFileName";
 
 export const Media: CollectionConfig = {
 	slug: "media",
@@ -8,7 +9,14 @@ export const Media: CollectionConfig = {
 		{
 			name: "alt",
 			type: "text",
-			required: true,
+			hooks: {
+				beforeValidate: [
+					({ data, value }) => {
+						if (value) return value;
+						return getFileName(data?.filename);
+					},
+				],
+			},
 		},
 		{
 			name: "caption",

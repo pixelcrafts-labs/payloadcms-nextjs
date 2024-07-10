@@ -8,6 +8,7 @@ export const Posts: CollectionConfig = {
 
 	admin: {
 		useAsTitle: "title",
+		group: "Blog",
 	},
 	versions: {
 		drafts: true,

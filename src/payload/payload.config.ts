@@ -16,6 +16,7 @@ import { Posts } from "@cms/collections/Posts";
 
 // Globals
 import { Header } from "@cms/globals/Header";
+import { Footer } from "@cms/globals/Footer";
 // import emailConfiguration from "./configs/email";
 
 const filename = fileURLToPath(import.meta.url);
@@ -35,7 +36,7 @@ export default buildConfig({
 	collections: [Media, Pages, Posts, Categories, Users],
 
 	// Define globals
-	globals: [Header],
+	globals: [Header, Footer],
 
 	typescript: {
 		outputFile: path.resolve(dirname, "payload-types.ts"),

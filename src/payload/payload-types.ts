@@ -21,6 +21,7 @@ export interface Config {
   };
   globals: {
     header: Header;
+    footer: Footer;
   };
   locale: null;
   user: User & {
@@ -226,6 +227,41 @@ export interface PayloadMigration {
  * via the `definition` "header".
  */
 export interface Header {
+  id: string;
+  columns?:
+    | {
+        label: string;
+        navItems?:
+          | {
+              link: {
+                type?: ('reference' | 'custom') | null;
+                newTab?: boolean | null;
+                reference?:
+                  | ({
+                      relationTo: 'pages';
+                      value: string | Page;
+                    } | null)
+                  | ({
+                      relationTo: 'posts';
+                      value: string | Post;
+                    } | null);
+                url?: string | null;
+                label: string;
+              };
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "footer".
+ */
+export interface Footer {
   id: string;
   columns?:
     | {

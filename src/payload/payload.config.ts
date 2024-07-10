@@ -35,7 +35,7 @@ export default buildConfig({
 	},
 
 	// Define and configure your collections in this array
-	collections: [Media, Pages, Posts, Categories, Users, Menu],
+	collections: [Menu, Media, Pages, Posts, Categories, Users],
 
 	// Define globals
 	globals: [Header, Footer, Settings],

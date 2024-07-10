@@ -6,6 +6,7 @@ export const Content: Block = {
 		{
 			name: "content",
 			type: "richText",
+			required: true,
 		},
 	],
 };

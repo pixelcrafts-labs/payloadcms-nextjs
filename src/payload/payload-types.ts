@@ -95,7 +95,7 @@ export interface Page {
             blockType: 'accordion';
           }
         | {
-            content?: {
+            content: {
               root: {
                 type: string;
                 children: {
@@ -109,7 +109,7 @@ export interface Page {
                 version: number;
               };
               [k: string]: unknown;
-            } | null;
+            };
             id?: string | null;
             blockName?: string | null;
             blockType: 'content';

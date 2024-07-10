@@ -227,12 +227,29 @@ export interface PayloadMigration {
  */
 export interface Header {
   id: string;
-  navItems?:
+  columns?:
     | {
-        link?: {
-          type?: ('reference' | 'custom') | null;
-          openInNewTab?: boolean | null;
-        };
+        label: string;
+        navItems?:
+          | {
+              link: {
+                type?: ('reference' | 'custom') | null;
+                newTab?: boolean | null;
+                reference?:
+                  | ({
+                      relationTo: 'pages';
+                      value: string | Page;
+                    } | null)
+                  | ({
+                      relationTo: 'posts';
+                      value: string | Post;
+                    } | null);
+                url?: string | null;
+                label: string;
+              };
+              id?: string | null;
+            }[]
+          | null;
         id?: string | null;
       }[]
     | null;

@@ -2,7 +2,7 @@
 import { mongooseAdapter } from "@payloadcms/db-mongodb";
 import { lexicalEditor } from "@payloadcms/richtext-lexical";
 import path from "path";
-import { buildConfig } from "payload";
+import { buildConfig, Payload } from "payload";
 import { fileURLToPath } from "url";
 import sharp from "sharp";
 import ENV from "@/lib/env";
@@ -70,7 +70,7 @@ export default buildConfig({
 	],
 
 	// after init callback
-	async onInit(payload) {
+	async onInit(payload: Payload) {
 		const existingUsers = await payload.find({
 			collection: "users",
 			limit: 1,

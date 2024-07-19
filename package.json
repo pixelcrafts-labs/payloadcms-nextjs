@@ -14,8 +14,8 @@
 		"format": "prettier src/**/*.{ts,tsx} --write",
 		"ci": "payload migrate && pnpm build",
 		"payload": "cross-env NODE_OPTIONS=--no-deprecation payload",
-		"generate:types": "payload generate:types",
-		"generate:schema": "payload-graphql generate:schema",
+		"payload:types": "payload generate:types",
+		"payload:schema": "payload-graphql generate:schema",
 		"commitlint": "commitlint --edit",
 		"commitizen": "exec < /dev/tty && git cz --hook || true"
 	},

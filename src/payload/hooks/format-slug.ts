@@ -19,7 +19,7 @@ const format = (string: string) => {
 
 const formatSlug =
 	(fallback: string): FieldHook =>
-	({ data, operation, originalDoc, value }) => {
+	({ data, originalDoc, value }) => {
 		// has value
 		if (value) {
 			console.log("has value", value, format(value));

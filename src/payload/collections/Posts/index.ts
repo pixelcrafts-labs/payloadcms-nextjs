@@ -1,7 +1,6 @@
 import { slugField } from "@cms/fields/slug";
-import { Accordion } from "@cms/blocks/Accordion";
 import type { CollectionConfig } from "payload";
-import { publishedDateField } from "@/payload/fields/publishedDate";
+import { publishedDateField } from "@/payload/fields/published-date";
 
 export const Posts: CollectionConfig = {
 	slug: "posts",

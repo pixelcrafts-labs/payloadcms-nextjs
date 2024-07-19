@@ -1,7 +1,7 @@
 import type { Field } from "payload";
 
-import deepMerge from "@cms/utilities/deepMerge";
-import validatePublishedDate from "@cms/hooks/validatePublishedDate";
+import deepMerge from "@cms/utilities/deep-merge";
+import validatePublishedDate from "@cms/hooks/validate-published-date";
 
 type PublishedDate = (overrides?: Partial<Field>) => Field;
 

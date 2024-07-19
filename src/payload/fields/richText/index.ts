@@ -1,5 +1,5 @@
 import { lexicalEditor } from "@payloadcms/richtext-lexical";
-import { defaultPublicDemoFeatures } from "./defaultFeatures";
+import { defaultPublicDemoFeatures } from "./default-features";
 
 const richTextEditor = lexicalEditor({
 	features: ({ defaultFeatures, rootFeatures }) => {

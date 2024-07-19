@@ -20,6 +20,9 @@ export interface Config {
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
   };
+  db: {
+    defaultIDType: string;
+  };
   globals: {
     header: Header;
     footer: Footer;
@@ -35,12 +38,15 @@ export interface UserAuthOperations {
     email: string;
   };
   login: {
-    password: string;
     email: string;
+    password: string;
   };
   registerFirstUser: {
     email: string;
     password: string;
+  };
+  unlock: {
+    email: string;
   };
 }
 /**
@@ -83,10 +89,38 @@ export interface Page {
   components?:
     | (
         | {
-            heading?: string | null;
-            groups: {
-              title?: string | null;
-              content?: {
+            accordion: {
+              heading?: string | null;
+              groups: {
+                title?: string | null;
+                content?: {
+                  root: {
+                    type: string;
+                    children: {
+                      type: string;
+                      version: number;
+                      [k: string]: unknown;
+                    }[];
+                    direction: ('ltr' | 'rtl') | null;
+                    format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                    indent: number;
+                    version: number;
+                  };
+                  [k: string]: unknown;
+                } | null;
+                id?: string | null;
+              }[];
+            };
+            options: {
+              'bottom-spacing': 'default' | 'small' | 'medium' | 'large' | 'none';
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'accordion';
+          }
+        | {
+            content: {
+              content: {
                 root: {
                   type: string;
                   children: {
@@ -100,51 +134,38 @@ export interface Page {
                   version: number;
                 };
                 [k: string]: unknown;
-              } | null;
-              id?: string | null;
-            }[];
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'accordion';
-          }
-        | {
-            content: {
-              root: {
-                type: string;
-                children: {
-                  type: string;
-                  version: number;
-                  [k: string]: unknown;
-                }[];
-                direction: ('ltr' | 'rtl') | null;
-                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-                indent: number;
-                version: number;
               };
-              [k: string]: unknown;
+            };
+            options: {
+              'bottom-spacing': 'default' | 'small' | 'medium' | 'large' | 'none';
             };
             id?: string | null;
             blockName?: string | null;
             blockType: 'content';
           }
         | {
-            content: {
-              root: {
-                type: string;
-                children: {
+            'image-content': {
+              content: {
+                root: {
                   type: string;
+                  children: {
+                    type: string;
+                    version: number;
+                    [k: string]: unknown;
+                  }[];
+                  direction: ('ltr' | 'rtl') | null;
+                  format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                  indent: number;
                   version: number;
-                  [k: string]: unknown;
-                }[];
-                direction: ('ltr' | 'rtl') | null;
-                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-                indent: number;
-                version: number;
+                };
+                [k: string]: unknown;
               };
-              [k: string]: unknown;
+              image: string | Media;
+              'image-position': 'left' | 'right';
             };
-            image: string | Media;
-            'image-position'?: ('left' | 'right') | null;
+            options: {
+              'bottom-spacing': 'default' | 'small' | 'medium' | 'large' | 'none';
+            };
             id?: string | null;
             blockName?: string | null;
             blockType: 'image-content';

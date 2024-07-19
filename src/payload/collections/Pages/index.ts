@@ -1,7 +1,7 @@
 import type { CollectionConfig } from "payload";
 
 import { slugField } from "@cms/fields/slug";
-import { publishedDateField } from "@cms/fields/publishedDate";
+import { publishedDateField } from "@cms/fields/published-date";
 
 import { Accordion } from "@cms/blocks/Accordion";
 import { Content } from "@cms/blocks/Content";

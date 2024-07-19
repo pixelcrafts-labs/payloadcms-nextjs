@@ -1,5 +1,5 @@
 import type { CollectionConfig } from "payload";
-import getFileName from "@cms/utilities/getFileName";
+import getFileName from "@cms/utilities/get-file-name";
 
 export const Media: CollectionConfig = {
 	slug: "media",
@@ -13,7 +13,7 @@ export const Media: CollectionConfig = {
 				beforeValidate: [
 					({ data, value }) => {
 						if (value) return value;
-						return getFileName(data?.filename);
+						return getFileName(data?.["filename"]);
 					},
 				],
 			},

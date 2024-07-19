@@ -1,6 +1,6 @@
-import type { Block } from "payload";
+import customBlockFields from "@cms/utilities/custom-block";
 
-export const ImageContent: Block = {
+export const ImageContent = customBlockFields({
 	slug: "image-content",
 	fields: [
 		{
@@ -25,6 +25,7 @@ export const ImageContent: Block = {
 					name: "image-position",
 					type: "select",
 					defaultValue: "left",
+					required: true,
 					options: [
 						{
 							label: "Left",
@@ -39,4 +40,4 @@ export const ImageContent: Block = {
 			],
 		},
 	],
-};
+});

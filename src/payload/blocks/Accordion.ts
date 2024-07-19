@@ -1,6 +1,6 @@
-import type { Block } from "payload";
+import customBlockFields from "@cms/utilities/custom-block";
 
-export const Accordion: Block = {
+export const Accordion = customBlockFields({
 	slug: "accordion",
 	fields: [
 		{
@@ -23,4 +23,4 @@ export const Accordion: Block = {
 			],
 		},
 	],
-};
+});

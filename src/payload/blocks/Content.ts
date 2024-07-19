@@ -1,6 +1,6 @@
-import type { Block } from "payload";
+import customBlockFields from "@cms/utilities/custom-block";
 
-export const Content: Block = {
+export const Content = customBlockFields({
 	slug: "content",
 	fields: [
 		{
@@ -9,4 +9,4 @@ export const Content: Block = {
 			required: true,
 		},
 	],
-};
+});

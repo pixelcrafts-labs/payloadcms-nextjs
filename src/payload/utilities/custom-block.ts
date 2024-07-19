@@ -1,4 +1,4 @@
-import type { Block, Field } from "payload";
+import type { Block, Field, TabsField } from "payload";
 
 const bottomSpacing: Field = {
 	name: "bottom-spacing",
@@ -36,6 +36,7 @@ const bottomSpacing: Field = {
 
 export default function customBlockFields(block: Block) {
 	if (!block.fields) return block;
+	const tabsField = block.fields.find((field) => field.type === "tabs");
 
 	// adding default fields
 	block.fields = [
@@ -53,6 +54,13 @@ export default function customBlockFields(block: Block) {
 			],
 		},
 	];
+
+	// extends the tabs from the block
+	if (tabsField) {
+		(block.fields[0] as TabsField).tabs = (
+			block.fields[0] as TabsField
+		).tabs.concat(tabsField.tabs);
+	}
 
 	return block;
 }

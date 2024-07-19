@@ -84,7 +84,7 @@ const link: LinkType = ({
 			required: true,
 			maxDepth: 1,
 			admin: {
-				condition: (_, siblingData) => siblingData?.type === "reference",
+				condition: (_, siblingData) => siblingData["type"] === "reference",
 			},
 		},
 		{
@@ -93,7 +93,7 @@ const link: LinkType = ({
 			type: "text",
 			required: true,
 			admin: {
-				condition: (_, siblingData) => siblingData?.type === "custom",
+				condition: (_, siblingData) => siblingData["type"] === "custom",
 			},
 		},
 	];

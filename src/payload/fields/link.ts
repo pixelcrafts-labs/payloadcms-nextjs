@@ -52,11 +52,15 @@ const link: LinkType = ({
 								label: "Custom URL",
 								value: "custom",
 							},
+							{
+								label: "Custom menu",
+								value: "menu",
+							},
 						],
 						defaultValue: "reference",
 						admin: {
 							layout: "horizontal",
-							width: "50%",
+							width: "60%",
 						},
 					},
 					{
@@ -64,7 +68,7 @@ const link: LinkType = ({
 						label: "Open in new tab",
 						type: "checkbox",
 						admin: {
-							width: "50%",
+							width: "40%",
 							style: {
 								alignSelf: "flex-end",
 							},
@@ -96,12 +100,23 @@ const link: LinkType = ({
 				condition: (_, siblingData) => siblingData["type"] === "custom",
 			},
 		},
+		{
+			name: "custom-menu",
+			label: "Custom Menu",
+			type: "relationship",
+			relationTo: "menu",
+			required: true,
+			admin: {
+				condition: (_, siblingData) => siblingData["type"] === "menu",
+			},
+		},
 	];
 
 	if (!disableLabel) {
 		// guard condition to avoid TS warning
 		if (linkTypes[0] && linkTypes[0].admin) linkTypes[0].admin.width = "50%";
 		if (linkTypes[1] && linkTypes[1].admin) linkTypes[1].admin.width = "50%";
+		if (linkTypes[2] && linkTypes[2].admin) linkTypes[2].admin.width = "50%";
 
 		linkResult.fields.push({
 			type: "row",

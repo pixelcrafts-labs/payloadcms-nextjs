@@ -261,29 +261,24 @@ export interface PayloadMigration {
  */
 export interface Header {
   id: string;
-  columns?:
+  navItems?:
     | {
-        label: string;
-        navItems?:
-          | {
-              link: {
-                type?: ('reference' | 'custom') | null;
-                newTab?: boolean | null;
-                reference?:
-                  | ({
-                      relationTo: 'pages';
-                      value: string | Page;
-                    } | null)
-                  | ({
-                      relationTo: 'posts';
-                      value: string | Post;
-                    } | null);
-                url?: string | null;
-                label: string;
-              };
-              id?: string | null;
-            }[]
-          | null;
+        link: {
+          type?: ('reference' | 'custom' | 'menu') | null;
+          newTab?: boolean | null;
+          reference?:
+            | ({
+                relationTo: 'pages';
+                value: string | Page;
+              } | null)
+            | ({
+                relationTo: 'posts';
+                value: string | Post;
+              } | null);
+          url?: string | null;
+          'custom-menu'?: (string | null) | Menu;
+          label: string;
+        };
         id?: string | null;
       }[]
     | null;
@@ -302,7 +297,7 @@ export interface Footer {
         navItems?:
           | {
               link: {
-                type?: ('reference' | 'custom') | null;
+                type?: ('reference' | 'custom' | 'menu') | null;
                 newTab?: boolean | null;
                 reference?:
                   | ({
@@ -314,6 +309,7 @@ export interface Footer {
                       value: string | Post;
                     } | null);
                 url?: string | null;
+                'custom-menu'?: (string | null) | Menu;
                 label: string;
               };
               id?: string | null;

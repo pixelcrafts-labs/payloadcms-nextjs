@@ -1,4 +1,4 @@
-import type { CollectionSlug, Field, GroupField } from "payload";
+import type { Field, GroupField } from "payload";
 import deepMerge from "@cms/utilities/deep-merge";
 
 export type LinkAppearances = "primary" | "secondary" | "default";

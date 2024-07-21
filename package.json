@@ -4,7 +4,6 @@
 	"private": true,
 	"type": "module",
 	"scripts": {
-		"setup": "git init && husky install",
 		"dev": "cross-env NODE_OPTIONS=--no-deprecation next dev",
 		"devturbo": "cross-env NODE_OPTIONS=--no-deprecation next dev --turbo",
 		"devsafe": "rm -rf .next && cross-env NODE_OPTIONS=--no-deprecation next dev",
@@ -14,10 +13,7 @@
 		"format": "prettier src/**/*.{ts,tsx} --write",
 		"ci": "payload migrate && pnpm build",
 		"payload": "cross-env NODE_OPTIONS=--no-deprecation payload",
-		"payload:types": "payload generate:types",
-		"payload:schema": "payload-graphql generate:schema",
-		"commitlint": "commitlint --edit",
-		"commitizen": "exec < /dev/tty && git cz --hook || true"
+		"payload:types": "payload generate:types"
 	},
 	"dependencies": {
 		"@hookform/resolvers": "^3.9.0",
@@ -26,7 +22,6 @@
 		"@payloadcms/next": "beta",
 		"@payloadcms/plugin-cloud": "beta",
 		"@payloadcms/richtext-lexical": "beta",
-		"@payloadcms/ui": "3.0.0-beta.29",
 		"@radix-ui/react-slot": "^1.1.0",
 		"class-variance-authority": "^0.7.0",
 		"clsx": "^2.1.1",
@@ -47,23 +42,16 @@
 		"zustand": "^4.5.4"
 	},
 	"devDependencies": {
-		"@commitlint/cli": "^19.3.0",
-		"@commitlint/config-conventional": "^19.2.2",
-		"@types/node": "^20.14.10",
+		"@types/node": "^20.14.11",
 		"@types/nodemailer": "^6.4.15",
 		"@types/react": "npm:types-react@19.0.0-beta.2",
 		"@types/react-dom": "npm:types-react-dom@19.0.0-beta.2",
 		"autoprefixer": "^10.4.19",
-		"commitizen": "^4.3.0",
-		"cz-conventional-changelog": "^3.3.0",
-		"dotenv": "^16.4.5",
 		"eslint": "^8.57.0",
 		"eslint-config-next": "15.0.0-rc.0",
-		"husky": "^9.0.11",
-		"lint-staged": "^15.2.7",
 		"postcss": "^8.4.39",
-		"prettier": "^3.3.2",
-		"tailwindcss": "^3.4.4",
+		"prettier": "^3.3.3",
+		"tailwindcss": "^3.4.6",
 		"typescript": "5.5.2"
 	},
 	"engines": {

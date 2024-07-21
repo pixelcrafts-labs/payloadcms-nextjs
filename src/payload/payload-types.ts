@@ -56,28 +56,32 @@ export interface UserAuthOperations {
 export interface Menu {
   id: string;
   title?: string | null;
+  navItems?:
+    | {
+        link?: {
+          type?: ('reference' | 'custom' | 'menu') | null;
+          'new-tab'?: boolean | null;
+          reference?:
+            | ({
+                relationTo: 'pages';
+                value: string | Page;
+              } | null)
+            | ({
+                relationTo: 'posts';
+                value: string | Post;
+              } | null);
+          url?: string | null;
+          menu?: {
+            relationTo: 'menu';
+            value: string | Menu;
+          } | null;
+          label?: string | null;
+        };
+        id?: string | null;
+      }[]
+    | null;
   updatedAt: string;
   createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "media".
- */
-export interface Media {
-  id: string;
-  alt?: string | null;
-  caption?: string | null;
-  updatedAt: string;
-  createdAt: string;
-  url?: string | null;
-  thumbnailURL?: string | null;
-  filename?: string | null;
-  mimeType?: string | null;
-  filesize?: number | null;
-  width?: number | null;
-  height?: number | null;
-  focalX?: number | null;
-  focalY?: number | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -180,6 +184,26 @@ export interface Page {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "media".
+ */
+export interface Media {
+  id: string;
+  alt?: string | null;
+  caption?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  url?: string | null;
+  thumbnailURL?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "posts".
  */
 export interface Post {
@@ -263,9 +287,9 @@ export interface Header {
   id: string;
   navItems?:
     | {
-        link: {
+        link?: {
           type?: ('reference' | 'custom' | 'menu') | null;
-          newTab?: boolean | null;
+          'new-tab'?: boolean | null;
           reference?:
             | ({
                 relationTo: 'pages';
@@ -276,8 +300,11 @@ export interface Header {
                 value: string | Post;
               } | null);
           url?: string | null;
-          'custom-menu'?: (string | null) | Menu;
-          label: string;
+          menu?: {
+            relationTo: 'menu';
+            value: string | Menu;
+          } | null;
+          label?: string | null;
         };
         id?: string | null;
       }[]
@@ -296,9 +323,9 @@ export interface Footer {
         label: string;
         navItems?:
           | {
-              link: {
+              link?: {
                 type?: ('reference' | 'custom' | 'menu') | null;
-                newTab?: boolean | null;
+                'new-tab'?: boolean | null;
                 reference?:
                   | ({
                       relationTo: 'pages';
@@ -309,8 +336,11 @@ export interface Footer {
                       value: string | Post;
                     } | null);
                 url?: string | null;
-                'custom-menu'?: (string | null) | Menu;
-                label: string;
+                menu?: {
+                  relationTo: 'menu';
+                  value: string | Menu;
+                } | null;
+                label?: string | null;
               };
               id?: string | null;
             }[]

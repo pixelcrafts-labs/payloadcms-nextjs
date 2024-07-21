@@ -1,34 +1,14 @@
-import type { Field, GroupField } from "payload";
+import type { CollectionSlug, Field, GroupField } from "payload";
 import deepMerge from "@cms/utilities/deep-merge";
-
-export const appearanceOptions = {
-	primary: {
-		label: "Primary Button",
-		value: "primary",
-	},
-	secondary: {
-		label: "Secondary Button",
-		value: "secondary",
-	},
-	default: {
-		label: "Default",
-		value: "default",
-	},
-};
 
 export type LinkAppearances = "primary" | "secondary" | "default";
 
 type LinkType = (options?: {
-	appearances?: LinkAppearances[] | false;
 	disableLabel?: boolean;
 	overrides?: Partial<GroupField>;
 }) => Field;
 
-const link: LinkType = ({
-	appearances,
-	disableLabel = false,
-	overrides = {},
-} = {}) => {
+const link: LinkType = ({ disableLabel = false, overrides = {} } = {}) => {
 	let linkResult: Field = {
 		name: "link",
 		type: "group",
@@ -49,7 +29,7 @@ const link: LinkType = ({
 								value: "reference",
 							},
 							{
-								label: "Custom URL",
+								label: "External link",
 								value: "custom",
 							},
 							{
@@ -64,13 +44,16 @@ const link: LinkType = ({
 						},
 					},
 					{
-						name: "newTab",
+						name: "new-tab",
 						label: "Open in new tab",
 						type: "checkbox",
 						admin: {
 							width: "40%",
 							style: {
 								alignSelf: "flex-end",
+							},
+							condition: (_, siblingData) => {
+								return siblingData["type"] !== "menu";
 							},
 						},
 					},
@@ -86,14 +69,13 @@ const link: LinkType = ({
 			type: "relationship",
 			relationTo: ["pages", "posts"],
 			required: true,
-			maxDepth: 1,
 			admin: {
 				condition: (_, siblingData) => siblingData["type"] === "reference",
 			},
 		},
 		{
 			name: "url",
-			label: "Custom URL",
+			label: "External link",
 			type: "text",
 			required: true,
 			admin: {
@@ -101,10 +83,10 @@ const link: LinkType = ({
 			},
 		},
 		{
-			name: "custom-menu",
+			name: "menu",
 			label: "Custom Menu",
 			type: "relationship",
-			relationTo: "menu",
+			relationTo: ["menu"],
 			required: true,
 			admin: {
 				condition: (_, siblingData) => siblingData["type"] === "menu",
@@ -112,6 +94,7 @@ const link: LinkType = ({
 		},
 	];
 
+	// show label
 	if (!disableLabel) {
 		// guard condition to avoid TS warning
 		if (linkTypes[0] && linkTypes[0].admin) linkTypes[0].admin.width = "50%";
@@ -126,39 +109,56 @@ const link: LinkType = ({
 					name: "label",
 					label: "Label",
 					type: "text",
-					required: true,
 					admin: {
 						width: "50%",
+					},
+					hooks: {
+						beforeValidate: [
+							async ({ value, siblingData, req }) => {
+								const type = siblingData["type"];
+
+								// reference and menu
+								const isReferenceOrMenu =
+									type === "reference" || type === "menu";
+
+								// get the page title or the menu title
+								if (isReferenceOrMenu && !value) {
+									const collection = siblingData[type].relationTo;
+									const id = siblingData[type].value;
+
+									const data = await req.payload.findByID({
+										collection,
+										id,
+									});
+
+									return data.title;
+								}
+
+								return value;
+							},
+						],
+					},
+					validate: (value, { siblingData }) => {
+						const type = siblingData["type"];
+
+						// for "reference" and "menu"
+						// we don't need to input the label
+						const isReferenceOrMenu = type === "reference" || type === "menu";
+
+						// for custom URL
+						if (!isReferenceOrMenu) {
+							return (
+								Boolean(value) || "You should input the value to this field"
+							);
+						}
+
+						return true;
 					},
 				},
 			],
 		});
 	} else {
 		linkResult.fields = [...linkResult.fields, ...linkTypes];
-	}
-
-	if (appearances !== false) {
-		let appearanceOptionsToUse = [
-			appearanceOptions.default,
-			appearanceOptions.primary,
-			appearanceOptions.secondary,
-		];
-
-		if (appearances) {
-			appearanceOptionsToUse = appearances.map(
-				(appearance) => appearanceOptions[appearance]
-			);
-		}
-
-		linkResult.fields.push({
-			name: "appearance",
-			type: "select",
-			defaultValue: "default",
-			options: appearanceOptionsToUse,
-			admin: {
-				description: "Choose how the link should be rendered.",
-			},
-		});
 	}
 
 	return deepMerge(linkResult, overrides);

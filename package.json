@@ -12,7 +12,6 @@
 		"lint": "cross-env NODE_OPTIONS=--no-deprecation next lint",
 		"format": "prettier src/**/*.{ts,tsx} --write",
 		"ci": "payload migrate && pnpm build",
-		"payload": "cross-env NODE_OPTIONS=--no-deprecation payload",
 		"payload:types": "payload generate:types"
 	},
 	"dependencies": {

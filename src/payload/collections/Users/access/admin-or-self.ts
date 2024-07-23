@@ -2,7 +2,7 @@ import type { Access } from "payload";
 import { checkRoles } from "@cms/collections/Users/utils/check-role";
 import { ROLES } from "@cms/collections/Users/utils/roles";
 
-export const adminOrSelf: Access = ({ req: { user }, id }) => {
+export const adminOrSelf: Access = ({ req: { user } }) => {
 	if (!user) return false;
 
 	// allow users with a role of 'admin'

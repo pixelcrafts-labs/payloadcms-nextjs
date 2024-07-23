@@ -1,0 +1,100 @@
+/**********************
+* Heading
+**********************/
+[class^="heading-"],
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	@apply block leading-none;
+}
+
+.lexical-editor [class^="heading-1"],
+body h1 {
+	@apply text-heading-1;
+}
+
+.lexical-editor [class^="heading-2"],
+body h2 {
+	@apply text-heading-2;
+}
+
+.lexical-editor [class^="heading-3"],
+body h3 {
+	@apply text-heading-3;
+}
+
+.lexical-editor [class^="heading-4"],
+body h4 {
+	@apply text-heading-4;
+}
+
+.lexical-editor [class^="heading-5"],
+body h5 {
+	@apply text-heading-5;
+}
+
+.lexical-editor [class^="heading-6"],
+body h6 {
+	@apply text-heading-6;
+}
+
+/***********************************
+* Spacing for heading and paragraph
+***********************************/
+.lexical-editor {
+	[class^="heading-"],
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		@apply mb-6;
+	}
+
+	p {
+		@apply mb-4;
+	}
+
+	:last-child {
+		@apply mb-0;
+	}
+}
+
+/***********************************
+* Menu
+***********************************/
+.lexical-editor {
+	ul {
+		@apply list-none m-0;
+	}
+
+	ul ul {
+		@apply pt-4;
+	}
+
+	ul:not(:last-child) {
+		@apply mb-6;
+	}
+
+	ul > li {
+		@apply pl-6 relative;
+	}
+
+	ul > li:not(:last-child) {
+		@apply mb-4;
+	}
+
+	ul > li:before {
+		content: "";
+		@apply absolute left-0 top-[0.5em] w-1 h-1 rounded-full bg-foreground
+			border border-foreground;
+	}
+
+	ul ul > li:before {
+		@apply bg-background;
+	}
+}

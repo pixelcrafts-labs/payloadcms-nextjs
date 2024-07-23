@@ -1,0 +1,190 @@
+/* item and link */
+.header__menu-item {
+}
+
+.header__menu-link {
+	@apply text-[var(--link-text-color)];
+	transition: all 0.3s ease;
+}
+
+/******************************
+* Desktop Menu
+*******************************/
+@media screen and (min-width: 73.8125em) {
+	.desktop-menu {
+		@apply block;
+	}
+	.mobile-menu {
+		@apply hidden;
+	}
+
+	.header {
+		&__menu-wrapper {
+			--after-size: 0.5rem;
+			--link-text-color: theme(colors.primary.DEFAULT);
+			--link-bg-color: transparent;
+			--link-text-hover: theme(colors.slate.400);
+			--link-bg-hover: theme(colors.slate.50);
+			--border-color: theme(colors.border);
+
+			@apply border px-6 rounded-full;
+		}
+
+		/* main menu */
+		&__menu {
+			@apply flex items-center gap-4;
+		}
+
+		/* sub menu */
+		&__sub-menu {
+			@apply absolute top-[calc(100%+var(--after-size))] left-1/2 opacity-0 invisible transition-all duration-300 -translate-x-1/2 flex-col bg-background border rounded-xl;
+		}
+
+		/* hover > show sub menu */
+		&__menu-item.has-children:hover > &__sub-menu,
+		&__menu-item.has-children:focus > &__sub-menu {
+			@apply opacity-100 visible;
+		}
+
+		/* menu item with children */
+		&__menu-item.has-children {
+			@apply flex flex-col justify-center relative;
+		}
+
+		/* link */
+		&__menu-link {
+			@apply min-h-10 text-[var(--link-text-color)] text-sm text-nowrap leading-none;
+		}
+
+		/* hover */
+		&__menu-link:hover,
+		&__menu-link:focus {
+			@apply text-[var(--link-text-hover)];
+		}
+
+		/* button link */
+		button.header__menu-link {
+			@apply flex items-center gap-1;
+		}
+	}
+
+	/**********************
+	* Menu Level 2
+	***********************/
+	/* bottom border */
+	.header__sub-menu .header__menu-item:not(:last-child) {
+		@apply border-b;
+	}
+
+	/* link */
+	.header__sub-menu .header__menu-link {
+		@apply min-h-[unset] text-[var(--link-text-color)] py-3 px-4;
+	}
+
+	/* rounded corner */
+	.header__sub-menu .header__menu-item:first-child > .header__menu-link {
+		@apply rounded-tr-xl rounded-tl-xl;
+	}
+	.header__sub-menu .header__menu-item:last-child > .header__menu-link {
+		@apply rounded-br-xl rounded-bl-xl;
+	}
+
+	/* hover state */
+	.header__sub-menu > .header__menu-item:hover > .header__menu-link,
+	.header__sub-menu > .header__menu-item:focus > .header__menu-link {
+		@apply bg-[var(--link-bg-hover)];
+	}
+
+	/* triangle */
+	.header__sub-menu:before {
+		content: "";
+		border-left: 5px solid transparent;
+		border-right: 5px solid transparent;
+		border-bottom: 5px solid var(--border-color);
+		@apply absolute left-3 bottom-[calc(100%+1px)] w-0 h-0 pointer-events-none select-none;
+	}
+	.header__sub-menu .header__sub-menu:before {
+		@apply top-3 right-[calc(100%-1px)] left-[unset] -rotate-90;
+	}
+
+	/* chevron */
+	button.header__menu-link .header__chevron {
+		@apply transition-transform;
+	}
+
+	/* second menu level */
+	button.header__menu-link:hover .header__chevron,
+	button.header__menu-link:focus .header__chevron {
+		@apply rotate-180;
+	}
+
+	/* third menu level */
+	.header__menu-item.has-children:hover > .header__menu-link > .header__chevron,
+	.header__menu-item.has-children:focus
+		> .header__menu-link
+		> .header__chevron {
+		@apply -rotate-90;
+	}
+
+	/**********************
+	* Menu Level 3
+	***********************/
+	.header__sub-menu .header__sub-menu {
+		@apply top-0 left-[calc(100%+var(--after-size))] transform-none;
+	}
+}
+
+/******************************
+* Mobile Menu
+*******************************/
+@media screen and (max-width: 73.75em) {
+	.desktop-menu {
+		@apply hidden;
+	}
+	.mobile-menu {
+		@apply block;
+	}
+
+	.header__menu-wrapper {
+		--link-text-color: theme(colors.primary.DEFAULT);
+		--link-bg-color: transparent;
+		--link-text-hover: theme(colors.slate.400);
+		--link-bg-hover: theme(colors.slate.50);
+	}
+
+	/* main menu */
+	.header__menu {
+		@apply flex flex-col;
+	}
+
+	.header__menu-item {
+		@apply py-3;
+	}
+
+	.header__menu-link {
+		@apply font-medium text-sm;
+	}
+
+	/* button link */
+	button.header__menu-link {
+		@apply flex items-center gap-1;
+	}
+
+	/* hover */
+	.header__menu-link:hover {
+		@apply text-[var(--link-text-hover)];
+	}
+
+	/* bottom border */
+	.header__menu .header__menu-item:not(:last-child) {
+		@apply border-b;
+	}
+
+	/* submenu */
+	.header__sub-menu {
+		@apply pl-3;
+	}
+	.header__sub-menu > li:first-child {
+		@apply border-t mt-4;
+	}
+}

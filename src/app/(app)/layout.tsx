@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "@/styles/globals.css";
+import "@/styles/globals.scss";
 import Header from "@/components/header";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import { cn } from "@/lib/utils";
+import CSSVariablesUpdater from "@/components/ui/css-variables-updater";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,6 +23,7 @@ export default function RootLayout({
 			<body className={cn(inter.className, "antialiased")}>
 				<ThemeProvider attribute="class" defaultTheme="system" enableSystem>
 					<Header />
+					<CSSVariablesUpdater />
 					<div>{children}</div>
 				</ThemeProvider>
 			</body>

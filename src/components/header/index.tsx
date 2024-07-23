@@ -1,5 +1,5 @@
 import Image from "next/image";
-import ColorModeSwitcher from "../color-mode-switcher";
+import ColorModeSwitcher from "../ui/color-mode-switcher";
 import Link from "next/link";
 import getMenuItems from "./lib/parse-menu";
 

@@ -4,7 +4,6 @@
 
 .header__menu-link {
 	@apply text-[var(--link-text-color)];
-	transition: all 0.3s ease;
 }
 
 /******************************
@@ -18,15 +17,25 @@
 		@apply hidden;
 	}
 
+	.header__menu-wrapper {
+		--after-size: 0.5rem;
+		--link-text-color: theme(colors.primary.DEFAULT);
+		--link-bg-color: transparent;
+		--link-text-hover: theme(colors.slate.400);
+		--link-bg-hover: theme(colors.slate.50);
+		--border-color: theme(colors.border);
+	}
+
+	.dark .header__menu-wrapper {
+		--link-text-color: theme(colors.primary.DEFAULT);
+		--link-bg-color: transparent;
+		--link-text-hover: theme(colors.slate.400);
+		--link-bg-hover: theme(colors.slate.800);
+		--border-color: theme(colors.border);
+	}
+
 	.header {
 		&__menu-wrapper {
-			--after-size: 0.5rem;
-			--link-text-color: theme(colors.primary.DEFAULT);
-			--link-bg-color: transparent;
-			--link-text-hover: theme(colors.slate.400);
-			--link-bg-hover: theme(colors.slate.50);
-			--border-color: theme(colors.border);
-
 			@apply border px-6 rounded-full;
 		}
 

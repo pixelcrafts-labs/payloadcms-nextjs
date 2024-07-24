@@ -1,7 +1,4 @@
-/* item and link */
-.header__menu-item {
-}
-
+/* link */
 .header__menu-link {
 	@apply text-[var(--link-text-color)];
 }
@@ -19,7 +16,7 @@
 
 	.header__menu-wrapper {
 		--after-size: 0.5rem;
-		--link-text-color: theme(colors.primary.DEFAULT);
+		--link-text-color: theme(colors.foreground);
 		--link-bg-color: transparent;
 		--link-text-hover: theme(colors.slate.400);
 		--link-bg-hover: theme(colors.slate.50);
@@ -122,14 +119,18 @@
 	}
 
 	/* second menu level */
-	button.header__menu-link:hover .header__chevron,
-	button.header__menu-link:focus .header__chevron {
+	.header__menu-item.has-children:hover .header__chevron,
+	.header__menu-item.has-children:focus .header__chevron {
 		@apply rotate-180;
 	}
 
 	/* third menu level */
-	.header__menu-item.has-children:hover > .header__menu-link > .header__chevron,
-	.header__menu-item.has-children:focus
+	.header__menu-item.has-children
+		.header__menu-item.has-children:hover
+		> .header__menu-link
+		> .header__chevron,
+	.header__menu-item.has-children
+		.header__menu-item.has-children:focus
 		> .header__menu-link
 		> .header__chevron {
 		@apply -rotate-90;
@@ -168,6 +169,9 @@
 
 	.header__menu-item {
 		@apply py-3;
+	}
+	.header__menu-item.has-children {
+		@apply pb-0;
 	}
 
 	.header__menu-link {

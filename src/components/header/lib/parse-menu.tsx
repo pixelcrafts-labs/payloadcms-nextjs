@@ -4,8 +4,8 @@ import type { BasePayload } from "payload";
 
 import getPayload from "@/lib/payload";
 
-import Item from "../ui/Item";
-import Menu from "../ui/Menu";
+import Item from "../components/menu/menu-item";
+import Menu from "../components/menu/menu";
 
 async function parseItem(
 	item: PayloadMenuItem,

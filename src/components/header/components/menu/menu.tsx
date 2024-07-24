@@ -1,4 +1,4 @@
-import Item from "./Item";
+import Item from "./menu-item";
 import { cloneElement, type ReactElement } from "react";
 import { ChevronDown } from "lucide-react";
 

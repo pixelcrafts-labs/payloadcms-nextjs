@@ -6,7 +6,7 @@
 /******************************
 * Desktop Menu
 *******************************/
-@media screen and (min-width: 73.8125em) {
+@media (min-width: theme("screens[lg]")) {
 	.desktop-menu {
 		@apply block;
 	}
@@ -147,7 +147,7 @@
 /******************************
 * Mobile Menu
 *******************************/
-@media screen and (max-width: 73.75em) {
+@media not all and (min-width: theme("screens[lg]")) {
 	.desktop-menu {
 		@apply hidden;
 	}

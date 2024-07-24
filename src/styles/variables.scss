@@ -18,7 +18,7 @@
 	--gap-side: calc((100% - var(--container)) * 0.5);
 }
 
-@media only screen and (max-width: 64em) {
+@media not all and (min-width: theme("screens[lg]")) {
 	:root {
 		--gap-container: 1.25rem;
 	}

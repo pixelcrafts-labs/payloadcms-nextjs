@@ -8,14 +8,18 @@ module.exports = {
 		"./src/**/*.{ts,tsx}",
 	],
 	prefix: "",
+	corePlugins: {
+		container: false,
+	},
 	theme: {
-		container: {
-			center: true,
-			padding: "2rem",
-			screens: {
-				"2xl": "1400px",
-			},
+		screens: {
+			sm: "30rem", // 480px
+			md: "48em", // 768px
+			lg: "64em", // 1024px
+			xl: "80em", // 1280px
+			"2xl": "96em", // 1536px
 		},
+
 		extend: {
 			colors: {
 				border: "hsl(var(--border))",
@@ -54,6 +58,20 @@ module.exports = {
 			},
 			spacing: {
 				"header-height": "var(--header-height)",
+
+				// container
+				container: "var(--container)",
+				"gap-container": "var(--gap-container)",
+				"gap-side": "var(--gap-side)",
+			},
+			fontSize: {
+				"heading-1": "var(--size-h1)",
+				"heading-2": "var(--size-h2)",
+				"heading-3": "var(--size-h3)",
+				"heading-4": "var(--size-h4)",
+				"heading-5": "var(--size-h5)",
+				"heading-6": "var(--size-h6)",
+				paragraph: "var(--size-paragraph)",
 			},
 			borderRadius: {
 				lg: "var(--radius)",

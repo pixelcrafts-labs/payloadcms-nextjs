@@ -19,7 +19,6 @@ import { Menu } from "@cms/collections/Menu";
 import { Header } from "@cms/globals/Header";
 import { Footer } from "@cms/globals/Footer";
 import { Settings } from "@cms/globals/Settings";
-// import emailConfiguration from "./configs/email";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -61,9 +60,6 @@ export default buildConfig({
 	// This is optional - if you don't need to do these things,
 	// you don't need it!
 	sharp,
-
-	// Configuring email for the CMS
-	// email: emailConfiguration,
 
 	plugins: [
 		// storage-adapter-placeholder

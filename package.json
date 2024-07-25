@@ -17,7 +17,6 @@
 	"dependencies": {
 		"@hookform/resolvers": "^3.9.0",
 		"@payloadcms/db-mongodb": "beta",
-		"@payloadcms/email-nodemailer": "beta",
 		"@payloadcms/next": "beta",
 		"@payloadcms/plugin-cloud": "beta",
 		"@payloadcms/richtext-lexical": "beta",

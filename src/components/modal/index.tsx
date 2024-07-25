@@ -69,12 +69,10 @@ export default function Modal({
 	};
 
 	return (
-		<ModalContext.Provider value={value}>
-			{children}
-			{<ModalOverlay />}
-		</ModalContext.Provider>
+		<ModalContext.Provider value={value}>{children}</ModalContext.Provider>
 	);
 }
 
 Modal.Trigger = ModalTrigger;
 Modal.Container = ModalContainer;
+Modal.Overlay = ModalOverlay;

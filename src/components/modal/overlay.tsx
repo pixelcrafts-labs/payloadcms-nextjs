@@ -1,9 +1,13 @@
-import { AnimatePresence, motion } from "framer-motion";
+import type { HTMLAttributes } from "react";
 import { createPortal } from "react-dom";
 import { useModalContext } from ".";
 import useMounted from "@/hooks/useMounted";
+import { cn } from "@/lib/utils";
+import { AnimatePresence, motion } from "framer-motion";
 
-export default function ModalOverlay() {
+type Props = HTMLAttributes<HTMLDivElement>;
+
+export default function ModalOverlay({ className, ...props }: Props) {
 	const { isOpen, toggle, onAnimationComplete } = useModalContext();
 	const { isMounted } = useMounted();
 
@@ -19,7 +23,11 @@ export default function ModalOverlay() {
 						onAnimationComplete={onAnimationComplete}
 					>
 						<div
-							className="fixed top-0 left-0 z-10 right-0 bottom-0 bg-black"
+							{...props}
+							className={cn(
+								"fixed top-0 left-0 z-10 right-0 bottom-0 bg-black",
+								className
+							)}
 							onClick={toggle}
 						>
 							<span className="sr-only">Modal overlay</span>

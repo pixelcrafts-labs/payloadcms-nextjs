@@ -1,10 +1,19 @@
-import type { ReactNode } from "react";
-import { useModalContext } from ".";
+import type { HTMLAttributes, ReactNode } from "react";
 import { createPortal } from "react-dom";
-import useMounted from "@/hooks/useMounted";
+import { useModalContext } from ".";
 import { AnimatePresence, motion } from "framer-motion";
+import { cn } from "@/lib/utils";
+import useMounted from "@/hooks/useMounted";
 
-export default function ModalContainer({ children }: { children: ReactNode }) {
+type Props = {
+	children: ReactNode;
+} & HTMLAttributes<HTMLDivElement>;
+
+export default function ModalContainer({
+	children,
+	className,
+	...props
+}: Props) {
 	const { isOpen } = useModalContext();
 	const { isMounted } = useMounted();
 
@@ -13,7 +22,13 @@ export default function ModalContainer({ children }: { children: ReactNode }) {
 		createPortal(
 			<AnimatePresence mode="wait">
 				{isOpen && (
-					<div className="fixed top-0 right-0 z-20 h-full w-full sm:w-96">
+					<div
+						className={cn(
+							"fixed top-0 right-0 z-20 h-full w-full sm:w-96",
+							className
+						)}
+						{...props}
+					>
 						<motion.div
 							initial={{ x: "100%", opacity: 0, height: "100%" }}
 							animate={{ x: 0, opacity: 1 }}

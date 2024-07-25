@@ -1,12 +1,32 @@
 "use client";
 
-import Modal from "@/components/modal";
+import Modal, { useModalContext } from "@/components/modal";
 import { Button } from "@/components/ui/button";
+import { debounce } from "@/lib/utils";
 import { Menu } from "lucide-react";
-import type { ReactNode } from "react";
+import { useEffect, type ReactNode } from "react";
 
 type Props = {
 	menuItems: ReactNode;
+};
+
+const CloseMenuOnMobile = () => {
+	const { toggle, isOpen } = useModalContext();
+
+	useEffect(() => {
+		const handleResize = debounce(() => {
+			// automatically close the menu when resizing
+			if (isOpen) toggle();
+		});
+
+		window.addEventListener("resize", handleResize);
+
+		return () => {
+			window.removeEventListener("resize", handleResize);
+		};
+	});
+
+	return null;
 };
 
 export default function MobileMenu({ menuItems }: Props) {
@@ -23,6 +43,8 @@ export default function MobileMenu({ menuItems }: Props) {
 					<div className="p-gap-container mobile-menu">{menuItems}</div>
 				</div>
 			</Modal.Container>
+			<Modal.Overlay />
+			<CloseMenuOnMobile />
 		</Modal>
 	);
 }

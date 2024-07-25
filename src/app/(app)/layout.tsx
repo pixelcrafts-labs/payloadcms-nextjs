@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "@/styles/globals.scss";
 import Header from "@/components/header";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import { cn } from "@/lib/utils";
 import CSSVariablesUpdater from "@/components/ui/css-variables-updater";
 import MainContent from "@/components/ui/main-content";
+import Footer from "@/components/footer";
 
 const inter = Inter({ subsets: ["latin"] });
+
+import "@/styles/globals.scss";
 
 export const metadata: Metadata = {
 	title: "Create Next App",
@@ -26,6 +28,7 @@ export default function RootLayout({
 					<Header />
 					<CSSVariablesUpdater />
 					<MainContent>{children}</MainContent>
+					<Footer />
 				</ThemeProvider>
 			</body>
 		</html>

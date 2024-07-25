@@ -59,7 +59,7 @@
 
 		/* link */
 		&__menu-link {
-			@apply min-h-10 text-[var(--link-text-color)] text-sm text-nowrap leading-none;
+			@apply min-h-10 text-[var(--link-text-color)] text-sm text-nowrap leading-none flex items-center;
 		}
 
 		/* hover */

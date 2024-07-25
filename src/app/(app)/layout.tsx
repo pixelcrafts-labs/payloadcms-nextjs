@@ -5,6 +5,7 @@ import Header from "@/components/header";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import { cn } from "@/lib/utils";
 import CSSVariablesUpdater from "@/components/ui/css-variables-updater";
+import MainContent from "@/components/ui/main-content";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,7 +25,7 @@ export default function RootLayout({
 				<ThemeProvider attribute="class" defaultTheme="system" enableSystem>
 					<Header />
 					<CSSVariablesUpdater />
-					<div>{children}</div>
+					<MainContent>{children}</MainContent>
 				</ThemeProvider>
 			</body>
 		</html>

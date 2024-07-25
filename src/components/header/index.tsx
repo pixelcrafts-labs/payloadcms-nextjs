@@ -7,7 +7,7 @@ import DesktopMenu from "./components/menu/desktop-menu";
 
 export default async function Header() {
 	return (
-		<header className="header w-full flex justify-between items-center px-5 min-h-header-height shadow-sm">
+		<header className="fixed top-0 left-0 z-[9999] w-full bg-background flex justify-between items-center px-5 min-h-header-height shadow-sm">
 			<Link href={"/"} className="relative inline-block aspect-[300/68] w-20">
 				<Image
 					src="/vercel.svg"

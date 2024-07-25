@@ -1,10 +1,9 @@
 "use client";
 
 import Modal, { useModalContext } from "@/components/modal";
-import { Button } from "@/components/ui/button";
 import { debounce } from "@/lib/utils";
-import { Menu } from "lucide-react";
 import { useEffect, type ReactNode } from "react";
+import BurgerButton from "./burger-button";
 
 type Props = {
 	menuItems: ReactNode;
@@ -33,10 +32,7 @@ export default function MobileMenu({ menuItems }: Props) {
 	return (
 		<Modal>
 			<Modal.Trigger asChild>
-				<Button variant={"outline"} size={"icon"} className="lg:hidden">
-					<Menu size={19} />
-					<span className="sr-only">Open Mobile Menu</span>
-				</Button>
+				<BurgerButton />
 			</Modal.Trigger>
 			<Modal.Container>
 				<div className="pt-header-height">

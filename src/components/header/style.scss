@@ -3,6 +3,34 @@
 	@apply text-[var(--link-text-color)];
 }
 
+/* burger button */
+.burger-button {
+	@apply relative;
+}
+.burger-button span {
+	@apply absolute top-1/2 left-1/2 w-1/2 h-[0.125rem] rounded-full bg-foreground transition-transform duration-300;
+}
+.burger-button span {
+	transform: translateX(-50%) translateY(-50%);
+}
+.burger-button span:first-child {
+	transform: translateX(-50%) translateY(calc(-50% - 0.35rem));
+}
+.burger-button span:last-child {
+	transform: translateX(-50%) translateY(calc(-50% + 0.35rem));
+}
+
+// active
+.burger-button.active span {
+	transform: translateX(-50%) translateY(-50%) rotateY(90deg);
+}
+.burger-button.active span:first-child {
+	transform: translateX(-50%) translateY(-50%) rotate(45deg);
+}
+.burger-button.active span:last-child {
+	transform: translateX(-50%) translateY(-50%) rotate(-45deg);
+}
+
 /******************************
 * Desktop Menu
 *******************************/

@@ -1,9 +1,9 @@
-import MenuBar from "./menu-bar";
+import { ReactNode } from "react";
 
-export default function DesktopMenu() {
-	return (
-		<div className="desktop-menu">
-			<MenuBar />
-		</div>
-	);
+type Props = {
+	menuItems: ReactNode;
+};
+
+export default function DesktopMenu({ menuItems }: Props) {
+	return <div className="desktop-menu">{menuItems}</div>;
 }

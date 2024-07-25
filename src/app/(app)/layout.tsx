@@ -29,6 +29,7 @@ export default function RootLayout({
 					<CSSVariablesUpdater />
 					<MainContent>{children}</MainContent>
 					<Footer />
+					<div id="modal" />
 				</ThemeProvider>
 			</body>
 		</html>

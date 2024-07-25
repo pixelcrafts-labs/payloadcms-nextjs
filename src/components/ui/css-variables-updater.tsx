@@ -27,8 +27,8 @@ export default function CSSVariablesUpdater() {
 			const gapContainerVariable = getCSSVariable(htmlTag, "--gap-container");
 
 			// calc new value
-			const container = getPixelValue(containerVariable);
 			const gapContainer = getPixelValue(gapContainerVariable);
+			const container = getPixelValue(containerVariable) + 2 * gapContainer;
 			const vw100 = document.body.clientWidth;
 			const scrollbarWidth = window.innerWidth - vw100;
 			const gapSize = Math.max(gapContainer, (vw100 - container) * 0.5);

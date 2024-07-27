@@ -12,7 +12,7 @@ export default async function Header() {
 	const menuItems = await getMenuItems();
 
 	return (
-		<header className="fixed top-0 left-0 z-[9999] w-full bg-background flex justify-between items-center px-gap-container min-h-header-height shadow-sm">
+		<header className="fixed top-0 left-0 z-[9999] w-full bg-background flex justify-between items-center px-gap-container min-h-header-height shadow-sm transition-colors">
 			<Link href={"/"} className="relative inline-block aspect-[300/68] w-20">
 				<Image
 					src="/vercel.svg"

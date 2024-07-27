@@ -17,7 +17,6 @@ const CloseMenuOnMobile = () => {
 			// automatically close the menu when resizing
 			if (isOpen) toggle();
 		});
-
 		window.addEventListener("resize", handleResize);
 
 		return () => {

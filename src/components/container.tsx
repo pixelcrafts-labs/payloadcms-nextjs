@@ -1,5 +1,8 @@
-import type { ReactNode } from "react";
+import type { ComponentPropsWithoutRef } from "react";
+import { cn } from "@/lib/utils";
 
-export default function Container({ children }: { children: ReactNode }) {
-	return <div className="container">{children}</div>;
+type Props = ComponentPropsWithoutRef<"div">;
+
+export default function Container({ className, ...props }: Props) {
+	return <div {...props} className={cn("container", className)} />;
 }

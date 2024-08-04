@@ -195,7 +195,7 @@
 		@apply flex flex-col;
 	}
 
-	.header__menu-item {
+	.header__menu-link {
 		@apply py-3;
 	}
 	.header__menu-item.has-children {
@@ -226,6 +226,6 @@
 		@apply pl-3;
 	}
 	.header__sub-menu > li:first-child {
-		@apply border-t mt-4;
+		@apply border-t;
 	}
 }

@@ -357,8 +357,9 @@ export interface Footer {
  */
 export interface Setting {
   id: string;
-  default?: (string | null) | Page;
-  blog?: (string | null) | Page;
+  default: string | Page;
+  error: string | Page;
+  notFound: string | Page;
   updatedAt?: string | null;
   createdAt?: string | null;
 }

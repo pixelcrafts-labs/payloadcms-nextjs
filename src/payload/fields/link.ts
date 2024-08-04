@@ -139,7 +139,10 @@ const link: LinkType = ({ disableLabel = false, overrides = {} } = {}) => {
 						],
 					},
 					validate: (value, { siblingData }) => {
-						const type = siblingData["type"];
+						const errorMessage = "You should input the value to this field";
+
+						if (!siblingData || !("type" in siblingData)) return errorMessage;
+						const type = siblingData["type"] as unknown as string;
 
 						// for "reference" and "menu"
 						// we don't need to input the label
@@ -147,9 +150,7 @@ const link: LinkType = ({ disableLabel = false, overrides = {} } = {}) => {
 
 						// for custom URL
 						if (!isReferenceOrMenu) {
-							return (
-								Boolean(value) || "You should input the value to this field"
-							);
+							return Boolean(value) || errorMessage;
 						}
 
 						return true;

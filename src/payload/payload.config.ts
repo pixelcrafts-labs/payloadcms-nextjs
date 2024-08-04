@@ -1,13 +1,13 @@
 // storage-adapter-import-placeholder
 import { mongooseAdapter } from "@payloadcms/db-mongodb";
-import { lexicalEditor } from "@payloadcms/richtext-lexical";
 import path from "path";
-import { buildConfig, Payload } from "payload";
+import { buildConfig } from "payload";
 import { fileURLToPath } from "url";
 import sharp from "sharp";
 import ENV from "@/lib/env";
+import richTextEditor from "@/payload/fields/rich-text";
 
-// Collections
+// collections
 import { Users } from "@cms/collections/Users";
 import { Media } from "@cms/collections/Media";
 import { Pages } from "@cms/collections/Pages";
@@ -15,10 +15,13 @@ import { Categories } from "@cms/collections/Categories";
 import { Posts } from "@cms/collections/Posts";
 import { Menu } from "@cms/collections/Menu";
 
-// Globals
+// globals
 import { Header } from "@cms/globals/Header";
 import { Footer } from "@cms/globals/Footer";
 import { Settings } from "@cms/globals/Settings";
+
+// seeds
+import seeds from "./seeds";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -44,7 +47,7 @@ export default buildConfig({
 	},
 
 	// If you'd like to use Rich Text, pass your editor here
-	editor: lexicalEditor(),
+	editor: richTextEditor,
 
 	// Your Payload secret - should be a complex and secure string, unguessable
 	secret: ENV.PAYLOAD_SECRET,
@@ -66,22 +69,5 @@ export default buildConfig({
 	],
 
 	// after init callback
-	async onInit(payload: Payload) {
-		const existingUsers = await payload.find({
-			collection: "users",
-			limit: 1,
-		});
-
-		if (existingUsers.docs.length === 0) {
-			await payload.create({
-				collection: "users",
-				data: {
-					email: "dev@payloadcms.com",
-					password: "test",
-					name: "Admin",
-					roles: ["admin"],
-				},
-			});
-		}
-	},
+	onInit: seeds,
 });

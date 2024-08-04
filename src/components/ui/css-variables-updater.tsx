@@ -28,10 +28,13 @@ export default function CSSVariablesUpdater() {
 
 			// calc new value
 			const gapContainer = getPixelValue(gapContainerVariable);
-			const container = getPixelValue(containerVariable) + 2 * gapContainer;
 			const vw100 = document.body.clientWidth;
+			const container = Math.min(
+				getPixelValue(containerVariable) + 2 * gapContainer,
+				vw100
+			);
 			const scrollbarWidth = window.innerWidth - vw100;
-			const gapSize = Math.max(gapContainer, (vw100 - container) * 0.5);
+			const gapSize = (vw100 - container) * 0.5 + gapContainer;
 
 			// scrollbar width
 			scrollbarWidth &&
@@ -41,7 +44,7 @@ export default function CSSVariablesUpdater() {
 			vw100 && setCSSVariable(htmlTag, "--100vw", `${vw100}px`);
 
 			// update gap side
-			gapSize && setCSSVariable(htmlTag, "--gap-side", `${gapSize}px`);
+			setCSSVariable(htmlTag, "--gap-side", `${gapSize}px`);
 
 			// container size
 			container &&
@@ -49,10 +52,7 @@ export default function CSSVariablesUpdater() {
 				setCSSVariable(
 					htmlTag,
 					"--container",
-					`${Math.min(
-						container,
-						document.body.clientWidth - gapContainer * 2
-					)}px`
+					`${container - gapContainer * 2}px`
 				);
 		};
 

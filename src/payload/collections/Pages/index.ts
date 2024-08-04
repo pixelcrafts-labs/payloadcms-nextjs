@@ -28,7 +28,6 @@ export const Pages: CollectionConfig = {
 			name: "components",
 			blocks: [Accordion, Content, ImageContent],
 			type: "blocks",
-			// required: true,
 		},
 
 		publishedDateField(),

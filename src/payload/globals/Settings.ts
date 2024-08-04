@@ -8,12 +8,21 @@ export const Settings: GlobalConfig = {
 			label: "Default page",
 			type: "relationship",
 			relationTo: "pages",
+			required: true,
 		},
 		{
-			name: "blog",
-			label: "Blog page",
+			name: "error",
+			label: "Error page",
 			type: "relationship",
 			relationTo: "pages",
+			required: true,
+		},
+		{
+			name: "notFound",
+			label: "Not found page",
+			type: "relationship",
+			relationTo: "pages",
+			required: true,
 		},
 	],
 };

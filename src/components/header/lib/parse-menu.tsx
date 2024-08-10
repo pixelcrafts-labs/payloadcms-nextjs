@@ -6,6 +6,7 @@ import getPayload from "@/lib/payload";
 
 import Item from "../components/menu/menu-item";
 import Menu from "../components/menu/menu";
+import { Menu as MenuType } from "@/payload/payload-types";
 
 async function parseItem(
 	item: PayloadMenuItem,
@@ -56,7 +57,9 @@ async function parseItem(
 
 			const { title } = value as { title: string };
 			const items =
-				value["navItems"]?.map((item) => parseItem(item, payload)) || [];
+				(value as MenuType)["navItems"]?.map((item) =>
+					parseItem(item, payload)
+				) || [];
 			const parsedItems = (await Promise.all(items)).filter(
 				Boolean
 			) as ReactElement<typeof Item>[];

@@ -19,7 +19,7 @@ export interface Config {
     'payload-migrations': PayloadMigration;
   };
   db: {
-    defaultIDType: string;
+    defaultIDType: number;
   };
   globals: {
     header: Header;
@@ -54,7 +54,7 @@ export interface UserAuthOperations {
  * via the `definition` "menu".
  */
 export interface Menu {
-  id: string;
+  id: number;
   title?: string | null;
   navItems?:
     | {
@@ -63,12 +63,12 @@ export interface Menu {
           'new-tab'?: boolean | null;
           reference?: {
             relationTo: 'pages';
-            value: string | Page;
+            value: number | Page;
           } | null;
           url?: string | null;
           menu?: {
             relationTo: 'menu';
-            value: string | Menu;
+            value: number | Menu;
           } | null;
           label?: string | null;
         };
@@ -83,7 +83,7 @@ export interface Menu {
  * via the `definition` "pages".
  */
 export interface Page {
-  id: string;
+  id: number;
   title: string;
   components?:
     | (
@@ -159,7 +159,7 @@ export interface Page {
                 };
                 [k: string]: unknown;
               };
-              image: string | Media;
+              image: number | Media;
               'image-position': 'left' | 'right';
             };
             options: {
@@ -182,7 +182,7 @@ export interface Page {
  * via the `definition` "media".
  */
 export interface Media {
-  id: string;
+  id: number;
   alt?: string | null;
   caption?: string | null;
   updatedAt: string;
@@ -202,7 +202,7 @@ export interface Media {
  * via the `definition` "users".
  */
 export interface User {
-  id: string;
+  id: number;
   name?: string | null;
   roles: ('editor' | 'admin')[];
   updatedAt: string;
@@ -221,10 +221,10 @@ export interface User {
  * via the `definition` "payload-preferences".
  */
 export interface PayloadPreference {
-  id: string;
+  id: number;
   user: {
     relationTo: 'users';
-    value: string | User;
+    value: number | User;
   };
   key?: string | null;
   value?:
@@ -244,7 +244,7 @@ export interface PayloadPreference {
  * via the `definition` "payload-migrations".
  */
 export interface PayloadMigration {
-  id: string;
+  id: number;
   name?: string | null;
   batch?: number | null;
   updatedAt: string;
@@ -255,7 +255,7 @@ export interface PayloadMigration {
  * via the `definition` "header".
  */
 export interface Header {
-  id: string;
+  id: number;
   navItems?:
     | {
         link?: {
@@ -263,12 +263,12 @@ export interface Header {
           'new-tab'?: boolean | null;
           reference?: {
             relationTo: 'pages';
-            value: string | Page;
+            value: number | Page;
           } | null;
           url?: string | null;
           menu?: {
             relationTo: 'menu';
-            value: string | Menu;
+            value: number | Menu;
           } | null;
           label?: string | null;
         };
@@ -283,7 +283,7 @@ export interface Header {
  * via the `definition` "footer".
  */
 export interface Footer {
-  id: string;
+  id: number;
   columns?:
     | {
         label: string;
@@ -294,12 +294,12 @@ export interface Footer {
                 'new-tab'?: boolean | null;
                 reference?: {
                   relationTo: 'pages';
-                  value: string | Page;
+                  value: number | Page;
                 } | null;
                 url?: string | null;
                 menu?: {
                   relationTo: 'menu';
-                  value: string | Menu;
+                  value: number | Menu;
                 } | null;
                 label?: string | null;
               };
@@ -317,10 +317,10 @@ export interface Footer {
  * via the `definition` "settings".
  */
 export interface Setting {
-  id: string;
-  default: string | Page;
-  error: string | Page;
-  notFound: string | Page;
+  id: number;
+  default: number | Page;
+  error: number | Page;
+  notFound: number | Page;
   updatedAt?: string | null;
   createdAt?: string | null;
 }

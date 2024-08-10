@@ -11,8 +11,6 @@ import richTextEditor from "@/payload/fields/rich-text";
 import { Users } from "@cms/collections/Users";
 import { Media } from "@cms/collections/Media";
 import { Pages } from "@cms/collections/Pages";
-import { Categories } from "@cms/collections/Categories";
-import { Posts } from "@cms/collections/Posts";
 import { Menu } from "@cms/collections/Menu";
 
 // globals
@@ -37,7 +35,7 @@ export default buildConfig({
 	},
 
 	// Define and configure your collections in this array
-	collections: [Menu, Media, Pages, Posts, Categories, Users],
+	collections: [Menu, Media, Pages, Users],
 
 	// Define globals
 	globals: [Header, Footer, Settings],

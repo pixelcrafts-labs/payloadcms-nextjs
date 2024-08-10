@@ -35,6 +35,6 @@ export const defaultFeatures = [
 
 	// link
 	LinkFeature({
-		enabledCollections: ["pages", "posts"],
+		enabledCollections: ["pages"],
 	}),
 ];

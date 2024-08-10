@@ -67,7 +67,7 @@ const link: LinkType = ({ disableLabel = false, overrides = {} } = {}) => {
 			name: "reference",
 			label: "Document to link to",
 			type: "relationship",
-			relationTo: ["pages", "posts"],
+			relationTo: ["pages"],
 			required: true,
 			admin: {
 				condition: (_, siblingData) => siblingData["type"] === "reference",

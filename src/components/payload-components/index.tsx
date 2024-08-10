@@ -22,7 +22,7 @@ export default function PayloadComponents({ components }: Props) {
 	return (
 		<>
 			{components
-				?.map((c, index) => {
+				?.map((c) => {
 					const { blockType } = c;
 					const data = (c as any)[blockType];
 

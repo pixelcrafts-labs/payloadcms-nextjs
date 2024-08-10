@@ -14,8 +14,6 @@ export interface Config {
     menu: Menu;
     media: Media;
     pages: Page;
-    posts: Post;
-    categories: Category;
     users: User;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -36,6 +34,7 @@ export interface Config {
 export interface UserAuthOperations {
   forgotPassword: {
     email: string;
+    password: string;
   };
   login: {
     email: string;
@@ -47,6 +46,7 @@ export interface UserAuthOperations {
   };
   unlock: {
     email: string;
+    password: string;
   };
 }
 /**
@@ -61,15 +61,10 @@ export interface Menu {
         link?: {
           type?: ('reference' | 'custom' | 'menu') | null;
           'new-tab'?: boolean | null;
-          reference?:
-            | ({
-                relationTo: 'pages';
-                value: string | Page;
-              } | null)
-            | ({
-                relationTo: 'posts';
-                value: string | Post;
-              } | null);
+          reference?: {
+            relationTo: 'pages';
+            value: string | Page;
+          } | null;
           url?: string | null;
           menu?: {
             relationTo: 'menu';
@@ -204,30 +199,6 @@ export interface Media {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "posts".
- */
-export interface Post {
-  id: string;
-  title: string;
-  publishedDate?: string | null;
-  slug?: string | null;
-  categories?: (string | Category)[] | null;
-  updatedAt: string;
-  createdAt: string;
-  _status?: ('draft' | 'published') | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "categories".
- */
-export interface Category {
-  id: string;
-  title?: string | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "users".
  */
 export interface User {
@@ -290,15 +261,10 @@ export interface Header {
         link?: {
           type?: ('reference' | 'custom' | 'menu') | null;
           'new-tab'?: boolean | null;
-          reference?:
-            | ({
-                relationTo: 'pages';
-                value: string | Page;
-              } | null)
-            | ({
-                relationTo: 'posts';
-                value: string | Post;
-              } | null);
+          reference?: {
+            relationTo: 'pages';
+            value: string | Page;
+          } | null;
           url?: string | null;
           menu?: {
             relationTo: 'menu';
@@ -326,15 +292,10 @@ export interface Footer {
               link?: {
                 type?: ('reference' | 'custom' | 'menu') | null;
                 'new-tab'?: boolean | null;
-                reference?:
-                  | ({
-                      relationTo: 'pages';
-                      value: string | Page;
-                    } | null)
-                  | ({
-                      relationTo: 'posts';
-                      value: string | Post;
-                    } | null);
+                reference?: {
+                  relationTo: 'pages';
+                  value: string | Page;
+                } | null;
                 url?: string | null;
                 menu?: {
                   relationTo: 'menu';

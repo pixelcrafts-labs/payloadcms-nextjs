@@ -1,3 +1,4 @@
+import PayloadComponents from "@/components/payload-components";
 import getPayload from "@/lib/payload";
 import type { Page } from "@/payload/payload-types";
 import { notFound } from "next/navigation";
@@ -34,13 +35,9 @@ export default async function Page({ params: { slug } }: Props) {
 		return notFound();
 	}
 
-	console.log(pageData);
-
 	return (
 		<div>
-			<div className="lexical-editor text-center">
-				<h1 className="text-heading-2">Hello and welcome!</h1>
-			</div>
+			<PayloadComponents components={(pageData as Page).components} />
 		</div>
 	);
 }

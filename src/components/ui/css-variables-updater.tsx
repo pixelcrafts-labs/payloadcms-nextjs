@@ -44,7 +44,7 @@ export default function CSSVariablesUpdater() {
 			vw100 && setCSSVariable(htmlTag, "--100vw", `${vw100}px`);
 
 			// update gap side
-			setCSSVariable(htmlTag, "--gap-side", `${gapSize}px`);
+			gapSize && setCSSVariable(htmlTag, "--gap-side", `${gapSize}px`);
 
 			// container size
 			container &&

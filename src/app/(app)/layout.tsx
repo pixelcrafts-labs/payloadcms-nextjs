@@ -7,7 +7,12 @@ import CSSVariablesUpdater from "@/components/ui/css-variables-updater";
 import MainContent from "@/components/main-content";
 import Footer from "@/components/footer";
 
-const inter = Inter({ subsets: ["latin"] });
+const primaryFont = Inter({
+	subsets: ["latin"],
+	display: "swap",
+	variable: "--font-primary",
+	weight: ["500"],
+});
 
 import "@/styles/globals.scss";
 
@@ -16,22 +21,16 @@ export const viewport: Viewport = {
 	initialScale: 1,
 	maximumScale: 1,
 	userScalable: false,
-	// themeColor: "#ffffff",
+	themeColor: "#ffffff",
 };
 
 export const metadata: Metadata = {
 	title: "Pixel CraftsLabs",
-	// manifest: "/manifest.json",
 	openGraph: {
 		title: "Pixel CraftsLabs",
 		type: "website",
 		description: "Crafting your website on the fly",
 		locale: "en-US",
-		// images: [
-		// 	{
-		// 		url: `${env.BASE_URL}/images/browse.png`,
-		// 	},
-		// ],
 	},
 };
 
@@ -42,7 +41,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en" suppressHydrationWarning>
-			<body className={cn(inter.className, "antialiased")}>
+			<body className={cn(primaryFont.variable, "antialiased")}>
 				<ThemeProvider attribute="class" defaultTheme="system" enableSystem>
 					<Header />
 					<CSSVariablesUpdater />

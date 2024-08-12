@@ -1,14 +1,8 @@
 /**********************
 * Heading
 **********************/
-[class^="heading-"],
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-	@apply block leading-none;
+:is([class^="heading-"], h1, h2, h3, h4, h5, h6) {
+	@apply block leading-none font-secondary;
 }
 
 .lexical-editor [class^="heading-1"],
@@ -45,13 +39,7 @@ body h6 {
 * Spacing for heading and paragraph
 ***********************************/
 .lexical-editor {
-	[class^="heading-"],
-	h1,
-	h2,
-	h3,
-	h4,
-	h5,
-	h6 {
+	:is([class^="heading-"], h1, h2, h3, h4, h5, h6) {
 		@apply mb-6;
 	}
 

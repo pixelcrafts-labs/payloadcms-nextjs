@@ -7,10 +7,12 @@ import { useEffect, useRef } from "react";
 type Props = {
 	title: string;
 	url: string;
+	openInNewTab: boolean;
 };
 
 const subMenuSelector = ".header__sub-menu";
 const activeClass = "active";
+
 const findElement = (element: Element): Element[] => {
 	const parentElement = element.classList.contains(subMenuSelector.slice(1))
 		? element.parentElement
@@ -27,7 +29,7 @@ const findElement = (element: Element): Element[] => {
 	return result;
 };
 
-export default function Item({ title, url }: Props) {
+export default function Item({ title, url, openInNewTab }: Props) {
 	const segment = useSelectedLayoutSegment()?.split("/").slice(-1)[0];
 	const activeElementRef = useRef<HTMLAnchorElement>(null);
 	const isActive = segment === url;
@@ -49,6 +51,7 @@ export default function Item({ title, url }: Props) {
 				className={`header__menu-link flex items-center ${isActive ? "active" : ""}`}
 				ref={activeElementRef}
 				href={url}
+				target={openInNewTab ? "_blank" : ""}
 			>
 				{title}
 			</Link>

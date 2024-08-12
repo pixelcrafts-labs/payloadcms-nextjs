@@ -1,17 +1,13 @@
-import type { PayloadMenuItem } from "./type";
-import type { ReactElement } from "react";
+import type { Item, PayloadMenuItem } from "./type";
 import type { BasePayload } from "payload";
-
 import getPayload from "@/lib/payload";
 
-import Item from "../components/menu/menu-item";
-import Menu from "../components/menu/menu";
 import { Menu as MenuType } from "@/payload/payload-types";
 
 async function parseItem(
 	item: PayloadMenuItem,
 	payload: BasePayload
-): Promise<ReactElement | null> {
+): Promise<Item | null> {
 	const { link } = item;
 
 	// checking for the TS warning
@@ -22,8 +18,15 @@ async function parseItem(
 	switch (type) {
 		// external link
 		case "custom": {
-			const { label: title, url } = link as { label: string; url: string };
-			return <Item title={title} url={url} />;
+			const { label: title, url } = link as {
+				label: string;
+				url: string;
+			};
+			return {
+				title,
+				url,
+				isOpenInNewTab: link["new-tab"] as boolean,
+			};
 		}
 
 		// internal link
@@ -32,7 +35,7 @@ async function parseItem(
 			let { value } = link[type];
 
 			// check type of value
-			if (typeof value === "string") {
+			if (typeof value !== "object") {
 				value = await payload.findByID({
 					collection: "pages",
 					id: value,
@@ -40,7 +43,12 @@ async function parseItem(
 			}
 
 			const { title, slug: url } = value as { title: string; slug: string };
-			return <Item title={title} url={url} />;
+
+			return {
+				title,
+				url,
+				isOpenInNewTab: link["new-tab"] as boolean,
+			};
 		}
 
 		// custom menu
@@ -60,10 +68,13 @@ async function parseItem(
 				(value as MenuType)["navItems"]?.map((item) =>
 					parseItem(item, payload)
 				) || [];
-			const parsedItems = (await Promise.all(items)).filter(
-				Boolean
-			) as ReactElement<typeof Item>[];
-			return <Menu items={parsedItems} isSubMenu={true} title={title} />;
+			const parsedItems = (await Promise.all(items)).filter(Boolean);
+			return {
+				title,
+				url: "#",
+				isOpenInNewTab: null,
+				menu: parsedItems as Item[],
+			};
 		}
 
 		default: {
@@ -75,12 +86,11 @@ async function parseItem(
 export default async function getMenuItems() {
 	// get payload instance
 	const payload = await getPayload();
-
 	const { navItems } = await payload.findGlobal({
 		slug: "header",
 	});
 
 	const items = navItems?.map((item) => parseItem(item, payload)) || [];
-	const parsedItems = (await Promise.all(items)) as ReactElement<typeof Item>[];
-	return <Menu items={parsedItems} />;
+	const parsedItems = await Promise.all(items);
+	return parsedItems;
 }

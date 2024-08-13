@@ -1,5 +1,6 @@
 // storage-adapter-import-placeholder
 import { postgresAdapter } from "@payloadcms/db-postgres";
+import { mongooseAdapter } from "@payloadcms/db-mongodb";
 import path from "path";
 import { buildConfig } from "payload";
 import { fileURLToPath } from "url";
@@ -52,11 +53,15 @@ export default buildConfig({
 
 	// Whichever database adapter you're using should go here
 	// Mongoose is shown as an example, but you can also use Postgres
-	db: postgresAdapter({
-		pool: {
-			connectionString: ENV.PAYLOAD_DATABASE_URI || "",
-		},
-	}),
+	db: ENV.PAYLOAD_DATABASE_URI.startsWith("postgresql")
+		? postgresAdapter({
+				pool: {
+					connectionString: ENV.PAYLOAD_DATABASE_URI || "",
+				},
+			})
+		: mongooseAdapter({
+				url: ENV.PAYLOAD_DATABASE_URI || "",
+			}),
 
 	// If you want to resize images, crop, set focal point, etc.
 	// make sure to install it and pass it to the config.

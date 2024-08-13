@@ -1,5 +1,5 @@
 import Link from "next/link";
-import React, { JSX, ReactElement } from "react";
+import React, { Fragment, JSX, ReactElement } from "react";
 
 import {
 	IS_BOLD,
@@ -40,7 +40,7 @@ export function serializeLexical({ nodes, format = "" }: Props): ReactElement {
 					const content = node.text;
 
 					// default element
-					let text = <>{content}</>;
+					let text = <Fragment key={index}>{content}</Fragment>;
 
 					// BOLD, ITALIC, STRIKETHROUGH, UNDERLINE
 					if (node.format & IS_BOLD) {

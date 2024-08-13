@@ -1,4 +1,3 @@
-import escapeHTML from "escape-html";
 import Link from "next/link";
 import React, { JSX, ReactElement } from "react";
 
@@ -38,7 +37,7 @@ export function serializeLexical({ nodes, format = "" }: Props): ReactElement {
 			{nodes?.map((_node, index): ReactElement | null => {
 				if (_node.type === "text") {
 					const node = _node as SerializedTextNode;
-					const content = escapeHTML(node.text);
+					const content = node.text;
 
 					// default element
 					let text = <>{content}</>;
@@ -203,7 +202,7 @@ export function serializeLexical({ nodes, format = "" }: Props): ReactElement {
 
 						return (
 							<Link
-								href={escapeHTML(url)}
+								href={url}
 								key={index}
 								{...(fields?.newTab
 									? {

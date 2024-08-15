@@ -1,7 +1,10 @@
 import React, { Fragment } from "react";
 import type { Page } from "@/payload/payload-types";
-import Content from "./content";
-import ImageContent from "./image-content";
+import ContentComponent from "./content";
+import ImageContentComponent from "./image-content";
+
+import { ImageContent } from "@cms/blocks/ImageContent";
+import { Content } from "@cms/blocks/Content";
 
 type Props = {
 	components: Page["components"];
@@ -9,12 +12,12 @@ type Props = {
 
 const CUSTOM_COMPONENTS = [
 	{
-		name: "image-content",
-		component: (props: any) => <ImageContent {...props} />,
+		name: ImageContent.slug,
+		component: (props: any) => <ImageContentComponent {...props} />,
 	},
 	{
-		name: "content",
-		component: (props: any) => <Content {...props} />,
+		name: Content.slug,
+		component: (props: any) => <ContentComponent {...props} />,
 	},
 ];
 

@@ -25,7 +25,7 @@ export default function PayloadComponents({ components }: Props) {
 	return (
 		<>
 			{components
-				?.map((c) => {
+				?.map((c, index) => {
 					const { blockType, options } = c;
 					const data = (c as any)[blockType];
 
@@ -39,7 +39,7 @@ export default function PayloadComponents({ components }: Props) {
 
 					const { component } = result;
 					return (
-						<Fragment key={blockType}>
+						<Fragment key={blockType + index}>
 							{component({ ...data, options })}
 						</Fragment>
 					);

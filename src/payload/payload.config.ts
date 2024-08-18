@@ -29,11 +29,14 @@ const dirname = path.dirname(filename);
 export default buildConfig({
 	admin: {
 		user: Users.slug,
-		autoLogin: {
-			email: "dev@payloadcms.com",
-			password: "test",
-			prefillOnly: true,
-		},
+		autoLogin:
+			process.env["NODE_ENV"] === "development"
+				? {
+						email: "dev@payloadcms.com",
+						password: "test",
+						prefillOnly: true,
+					}
+				: undefined,
 	},
 
 	// Define and configure your collections in this array

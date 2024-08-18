@@ -23,5 +23,10 @@ export const Media: CollectionConfig = {
 			type: "text",
 		},
 	],
-	upload: true,
+	upload: {
+		staticDir: "media",
+		mimeTypes: ["image/*", "video/*"],
+
+		disableLocalStorage: true,
+	},
 };

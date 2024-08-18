@@ -7,6 +7,7 @@ import { fileURLToPath } from "url";
 import sharp from "sharp";
 import ENV from "@/lib/env";
 import richTextEditor from "@/payload/fields/rich-text";
+import { s3Storage } from "@payloadcms/storage-s3";
 
 // collections
 import { Users } from "@cms/collections/Users";
@@ -71,6 +72,22 @@ export default buildConfig({
 
 	plugins: [
 		// storage-adapter-placeholder
+		s3Storage({
+			collections: {
+				[Media.slug]: true,
+			},
+			bucket: ENV.S3_BUCKET,
+			config: {
+				forcePathStyle: true,
+				credentials: {
+					accessKeyId: ENV.S3_ACCESS_KEY_ID,
+					secretAccessKey: ENV.S3_SECRET_ACCESS_KEY,
+				},
+				region: ENV.S3_REGION,
+				endpoint: ENV.S3_ENDPOINT,
+				// ... Other S3 configuration
+			},
+		}),
 	],
 
 	// after init callback

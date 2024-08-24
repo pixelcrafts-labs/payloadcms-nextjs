@@ -7,6 +7,9 @@ module.exports = {
 		"./app/**/*.{ts,tsx}",
 		"./src/**/*.{ts,tsx}",
 	],
+	future: {
+		hoverOnlyWhenSupported: true,
+	},
 	prefix: "",
 	corePlugins: {
 		container: false,

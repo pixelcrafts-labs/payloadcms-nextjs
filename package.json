@@ -44,7 +44,6 @@
 		"zustand": "^4.5.5"
 	},
 	"devDependencies": {
-		"@lexical/eslint-plugin": "^0.16.1",
 		"@types/escape-html": "^1.0.4",
 		"@types/node": "^20.15.0",
 		"@types/nodemailer": "^6.4.15",

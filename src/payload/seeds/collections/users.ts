@@ -5,20 +5,9 @@ export default async function createUsers(payload: Payload) {
 	await payload.create({
 		collection: "users",
 		data: {
-			email: "dev@pixelcraftslabs.com",
-			password: "test",
-			name: "Admin",
-			roles: ["admin"],
-		},
-	});
-
-	// admin account
-	await payload.create({
-		collection: "users",
-		data: {
-			email: "admin@pixelcraftslabs.com",
-			password: "pixelcraftslabs@aSd",
-			name: "Admin",
+			email: ENV.PAYLOAD_DEV_EMAIL,
+			password: ENV.PAYLOAD_DEV_PASSWORD,
+			name: "Developer",
 			roles: ["admin"],
 		},
 	});

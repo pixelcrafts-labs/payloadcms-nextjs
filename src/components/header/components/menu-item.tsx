@@ -50,7 +50,7 @@ export default function Item({ title, url, openInNewTab }: Props) {
 			<Link
 				className={`header__menu-link flex items-center ${isActive ? "active" : ""}`}
 				ref={activeElementRef}
-				href={url}
+				href={"/" + url}
 				target={openInNewTab ? "_blank" : ""}
 			>
 				{title}
